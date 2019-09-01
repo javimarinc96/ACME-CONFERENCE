@@ -18,10 +18,50 @@
 	">
 
 	<util:list id="converters">
-		<!-- 
-			Add your own converters using entries of the following form: 
-			<bean class="converters.Class1ToClass2" /> 
-		-->
+		<bean class="converters.ActorToStringConverter" />
+		<bean class="converters.AdministratorToStringConverter" />
+		<bean class="converters.ActivityToStringConverter" />
+		<bean class="converters.ConferenceToStringConverter" />
+		<bean class="converters.SubmissionToStringConverter" />
+		<bean class="converters.PaperToStringConverter" />
+		<bean class="converters.CreditCardToStringConverter" />
+		<bean class="converters.TutorialToStringConverter" />
+		<bean class="converters.PanelToStringConverter" />
+		<bean class="converters.PresentationToStringConverter" />
+		<bean class="converters.AuthorToStringConverter" />
+		<bean class="converters.ReviewerToStringConverter" />
+		<bean class="converters.ReportToStringConverter" />
+		<bean class="converters.SectionToStringConverter" />
+		<bean class="converters.MessageToStringConverter" />
+		<bean class="converters.RegistrationToStringConverter" />
+		<bean class="converters.TopicToStringConverter" />
+		<bean class="converters.CustomizationToStringConverter" />
+		<bean class="converters.AuthorityToStringConverter" />
+		<bean class="converters.UserAccountToStringConverter" />
+		<bean class="converters.QuoletToStringConverter" />
+		
+		<bean class="converters.StringToActorConverter" />
+		<bean class="converters.StringToAuthorConverter" />
+		<bean class="converters.StringToAdministratorConverter" />
+		<bean class="converters.StringToReviewerConverter" />
+		<bean class="converters.StringToActivityConverter" />
+		<bean class="converters.StringToTutorialConverter" />
+		<bean class="converters.StringToSectionConverter" />
+		<bean class="converters.StringToPanelConverter" />
+		<bean class="converters.StringToPresentationConverter" />
+		<bean class="converters.StringToRegistrationConverter" />
+		<bean class="converters.StringToCreditCardConverter" />
+		<bean class="converters.StringToConferenceConverter" />
+		<bean class="converters.StringToSubmissionConverter" />
+		<bean class="converters.StringToPaperConverter" />
+		<bean class="converters.StringToReportConverter" />
+		<bean class="converters.StringToMessageConverter" />
+		<bean class="converters.StringToCustomizationConverter" />
+		<bean class="converters.StringToTopicConverter" />
+		<bean class="converters.StringToAuthorityConverter" />
+		<bean class="converters.StringToUserAccountConverter" />
+		<bean class="converters.StringToQuoletConverter" />
+		
 	</util:list>
 	
 </beans>

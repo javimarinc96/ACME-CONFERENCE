@@ -1,48 +1,174 @@
-/*
- * AdministratorController.java
- * 
- * Copyright (C) 2019 Universidad de Sevilla
- * 
- * The use of this project is hereby constrained to the conditions of the
- * TDG Licence, a copy of which you may download from
- * http://www.tdg-seville.info/License.html
- */
 
 package controllers;
 
+import javax.validation.Valid;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.util.Assert;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
+
+import services.AdministratorService;
+import domain.Administrator;
 
 @Controller
 @RequestMapping("/administrator")
 public class AdministratorController extends AbstractController {
 
-	// Constructors -----------------------------------------------------------
+	@Autowired
+	private AdministratorService	administratorService;
 
-	public AdministratorController() {
-		super();
-	}
 
-	// Action-1 ---------------------------------------------------------------		
+	@RequestMapping(value = "/create", method = RequestMethod.GET)
+	public ModelAndView create() {
 
-	@RequestMapping("/action-1")
-	public ModelAndView action1() {
-		ModelAndView result;
+		final Administrator administrator = this.administratorService.create();
 
-		result = new ModelAndView("administrator/action-1");
+		final ModelAndView result = this.createEditModelAndView(administrator);
 
 		return result;
 	}
 
-	// Action-2 ---------------------------------------------------------------
-
-	@RequestMapping("/action-2")
-	public ModelAndView action2() {
+	@RequestMapping(value = "/create", method = RequestMethod.POST, params = "save")
+	public ModelAndView saveCreate(@Valid final Administrator administrator, final BindingResult binding) {
 		ModelAndView result;
 
-		result = new ModelAndView("administrator/action-2");
+		if (binding.hasErrors()) {
+			result = this.createEditModelAndView(administrator);
+			System.out.println(binding.getAllErrors());
+		} else
+			try {
+				this.administratorService.save(administrator);
+				result = new ModelAndView("redirect:/");
 
+			} catch (final Throwable oops) {
+				System.out.println(oops);
+				result = this.createEditModelAndView(administrator, "administrator.commit.error");
+			}
+
+		return result;
+	}
+
+	// Edit ------------------------------------------------------
+
+	@RequestMapping(value = "/edit", method = RequestMethod.GET)
+	public ModelAndView edit() {
+		ModelAndView res;
+		final Administrator admin = this.administratorService.findByPrincipal();
+
+		Assert.notNull(admin);
+		res = this.editModelAndView(admin);
+
+		return res;
+	}
+
+	// Save del Edit----------------------------------------------
+
+	@RequestMapping(value = "/edit", method = RequestMethod.POST, params = "save")
+	public ModelAndView saveEdit(@Valid final Administrator admin, final BindingResult binding) {
+		ModelAndView res;
+		if (binding.hasErrors()) {
+			res = this.editModelAndView(admin);
+			System.out.println(binding.getAllErrors());
+		} else
+			try {
+				this.administratorService.save(admin);
+				res = new ModelAndView("redirect:/");
+
+			} catch (final Throwable oops) {
+				res = this.editModelAndView(admin, "administrator.commit.error");
+			}
+
+		return res;
+	}
+	// Dashboard -----------------------------------------------------------
+	@RequestMapping("/dashboard")
+	public ModelAndView dashboard() {
+
+		final ModelAndView result;
+
+		// Queries
+		final Double avgFeeConference = this.administratorService.avgFeeConference();
+		final int maxFeeConference = this.administratorService.maxFeeConference();
+		final int minFeeConference = this.administratorService.minFeeConference();
+		final Double stddevFeeConference = this.administratorService.stddevFeeConference();
+
+		final Double avgRegistrationsConference = this.administratorService.avgRegistrationsConference();
+		final int maxRegistrationsConference = this.administratorService.maxRegistrationsConference();
+		final int minRegistrationsConference = this.administratorService.minRegistrationsConference();
+		final Double stddevRegistrationsConference = this.administratorService.stddevRegitrationsConference();
+
+		final Double avgSubmissionsConference = this.administratorService.avgSubmissionsConference();
+		final int maxSubmissionsConference = this.administratorService.maxSubmissionsConference();
+		final int minSubmissionsConference = this.administratorService.minSubmissionsConference();
+		final Double stddevSubmissionsConference = this.administratorService.stddevSubmissionsConference();
+
+		final Double avgDaysConference = this.administratorService.avgDaysConference();
+		final int maxDaysConference = this.administratorService.maxDaysConference();
+		final int minDaysConference = this.administratorService.minDaysConference();
+		final Double stddevDaysConference = this.administratorService.stddevDaysConference();
+
+		result = new ModelAndView("administrator/dashboard");
+
+		result.addObject("avgFeeConference", avgFeeConference);
+		result.addObject("maxFeeConference", maxFeeConference);
+		result.addObject("minFeeConference", minFeeConference);
+		result.addObject("stddevFeeConference", stddevFeeConference);
+
+		result.addObject("avgRegistrationsConference", avgRegistrationsConference);
+		result.addObject("maxRegistrationsConference", maxRegistrationsConference);
+		result.addObject("minRegistrationsConference", minRegistrationsConference);
+		result.addObject("stddevRegistrationsConference", stddevRegistrationsConference);
+
+		result.addObject("avgSubmissionsConference", avgSubmissionsConference);
+		result.addObject("maxSubmissionsConference", maxSubmissionsConference);
+		result.addObject("minSubmissionsConference", minSubmissionsConference);
+		result.addObject("stddevSubmissionsConference", stddevSubmissionsConference);
+
+		result.addObject("avgDaysConference", avgDaysConference);
+		result.addObject("maxDaysConference", maxDaysConference);
+		result.addObject("minDaysConference", minDaysConference);
+		result.addObject("stddevDaysConference", stddevDaysConference);
+
+		return result;
+	}
+
+	//Ancillary methods ------------------------------------------------------------
+
+	protected ModelAndView createEditModelAndView(final Administrator administrator) {
+
+		ModelAndView result;
+		result = this.createEditModelAndView(administrator, null);
+		return result;
+
+	}
+
+	protected ModelAndView createEditModelAndView(final Administrator administrator, final String message) {
+
+		ModelAndView result;
+		result = new ModelAndView("administrator/create");
+		result.addObject("administrator", administrator);
+		result.addObject("message", message);
+		return result;
+	}
+
+	protected ModelAndView editModelAndView(final Administrator administrator) {
+
+		ModelAndView result;
+		result = this.editModelAndView(administrator, null);
+		return result;
+
+	}
+
+	protected ModelAndView editModelAndView(final Administrator administrator, final String message) {
+
+		ModelAndView result;
+		result = new ModelAndView("administrator/edit");
+		result.addObject("administrator", administrator);
+		result.addObject("message", message);
 		return result;
 	}
 

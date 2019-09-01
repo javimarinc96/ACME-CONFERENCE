@@ -24,8 +24,22 @@
 		<value>/views/welcome/messages</value>
 		
 		<value>/views/administrator/messages</value>
-		<value>/views/customer/messages</value>
 		<value>/views/profile/messages</value>
+		<value>/views/activity/messages</value>
+		<value>/views/tutorial/messages</value>
+		<value>/views/panel/messages</value>
+		<value>/views/presentation/messages</value>
+		<value>/views/report/messages</value>
+		<value>/views/topic/messages</value>
+		<value>/views/message/messages</value>
+		<value>/views/author/messages</value>
+		<value>/views/reviewer/messages</value>
+		<value>/views/conference/messages</value>
+		<value>/views/submission/messages</value>
+		<value>/views/registration/messages</value>
+		<value>/views/customization/messages</value>
+		<value>/views/section/messages</value>
+		<value>/views/quolet/messages</value>
 	</util:list>
 
 </beans>

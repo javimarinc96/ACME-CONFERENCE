@@ -24,8 +24,22 @@
 		<value>/views/welcome/tiles.xml</value>
 		
 		<value>/views/administrator/tiles.xml</value>
-		<value>/views/customer/tiles.xml</value>
 		<value>/views/profile/tiles.xml</value>
+		<value>/views/activity/tiles.xml</value>
+		<value>/views/tutorial/tiles.xml</value>
+		<value>/views/panel/tiles.xml</value>
+		<value>/views/presentation/tiles.xml</value>
+		<value>/views/report/tiles.xml</value>
+		<value>/views/topic/tiles.xml</value>
+		<value>/views/message/tiles.xml</value>
+		<value>/views/author/tiles.xml</value>
+		<value>/views/reviewer/tiles.xml</value>
+		<value>/views/conference/tiles.xml</value>
+		<value>/views/submission/tiles.xml</value>
+		<value>/views/registration/tiles.xml</value>
+		<value>/views/customization/tiles.xml</value>
+		<value>/views/section/tiles.xml</value>
+		<value>/views/quolet/tiles.xml</value>
 	</util:list>
 
 </beans>
