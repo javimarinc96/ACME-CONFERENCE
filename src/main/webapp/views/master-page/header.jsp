@@ -29,6 +29,7 @@
 					<!-- <li><a href="quolet/administrator/list.do"><spring:message code="master.page.quolet.list" /></a></li>  -->
 					<li><a href="administrator/create.do"><spring:message code="master.page.administrator.create" /></a></li>
 					<li><a href="conference/administrator/list.do"><spring:message code="master.page.conference.list" /></a></li>
+					<li><a href="category/administrator/list.do"><spring:message code="master.page.category.list" /></a></li>
 					<li><a href="conference/administrator/create.do"><spring:message code="master.page.conference.create" /></a></li>
 					<li><a href="administrator/dashboard.do"><spring:message code="master.page.administrator.dashboard" /></a></li>
 					<li><a href="topic/administrator/list.do"><spring:message code="master.page.topic.list" /></a></li>
@@ -43,6 +44,7 @@
 					<li class="arrow"></li>
 					<li><a href="submission/author/list.do"><spring:message code="master.page.submission.list" /></a></li>
 					<li><a href="registration/author/list.do"><spring:message code="master.page.registration.list" /></a></li>
+					<li><a href="finder/author/edit.do"><spring:message code="master.page.finder.edit" /></a></li>
 				</ul>
 			</li>
 		</security:authorize>

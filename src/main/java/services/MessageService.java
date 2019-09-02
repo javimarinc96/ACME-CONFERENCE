@@ -181,6 +181,7 @@ public class MessageService {
 	}
 
 	public void broadcastSubmissionAuthors(final Message message) {
+
 		Assert.notNull(message);
 		final Actor sender = message.getSender();
 		Assert.notNull(sender);

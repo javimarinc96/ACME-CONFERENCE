@@ -23,7 +23,8 @@
 <!--Ocultos-->
 
     <form:hidden path="id" />
-    <form:hidden path="version" /> 
+    <form:hidden path="version" />
+    <form:hidden path="finder" /> 
 	<form:hidden path="userAccount" /> 
                 
 	<!--Name-->

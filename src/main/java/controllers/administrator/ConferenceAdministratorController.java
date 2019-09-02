@@ -14,8 +14,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import services.CategoryService;
 import services.ConferenceService;
 import controllers.AbstractController;
+import domain.Category;
 import domain.Conference;
 
 @Controller
@@ -24,6 +26,9 @@ public class ConferenceAdministratorController extends AbstractController {
 
 	@Autowired
 	private ConferenceService	ConferenceService;
+
+	@Autowired
+	private CategoryService		CategoryService;
 
 
 	@RequestMapping(value = "/listForthcoming", method = RequestMethod.GET)
@@ -124,8 +129,12 @@ public class ConferenceAdministratorController extends AbstractController {
 		ModelAndView res;
 		Conference pro;
 
+		final Collection<Category> cats = this.CategoryService.findAll();
+
 		pro = this.ConferenceService.create();
 		res = this.createEditModelAndView(pro);
+
+		res.addObject("categories", cats);
 
 		return res;
 	}
@@ -137,7 +146,11 @@ public class ConferenceAdministratorController extends AbstractController {
 
 		c = this.ConferenceService.findOne(conferenceId);
 
+		final Collection<Category> cats = this.CategoryService.findAll();
+
 		res = this.createEditModelAndView(c);
+
+		res.addObject("categories", cats);
 
 		if (c.getDraftMode() == false)
 			res = new ModelAndView("redirect:list.do");
@@ -150,9 +163,11 @@ public class ConferenceAdministratorController extends AbstractController {
 	@RequestMapping(value = "/save", method = RequestMethod.POST, params = "save")
 	public ModelAndView save(@Valid final Conference c, final BindingResult binding) {
 		ModelAndView result;
+		final Collection<Category> cats = this.CategoryService.findAll();
 
 		if (binding.hasErrors()) {
 			result = this.createEditModelAndView(c);
+			result.addObject("categories", cats);
 			System.out.println(binding.getAllErrors());
 		} else
 			try {
@@ -162,6 +177,7 @@ public class ConferenceAdministratorController extends AbstractController {
 			} catch (final Throwable oops) {
 				System.out.println(oops);
 				result = this.createEditModelAndView(c, "conference.commit.error");
+				result.addObject("categories", cats);
 			}
 
 		return result;

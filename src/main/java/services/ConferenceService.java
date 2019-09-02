@@ -318,7 +318,7 @@ public class ConferenceService {
 		final String s = searcher.toLowerCase();
 
 		for (final Conference c : all)
-			if (c.getTitle().toLowerCase().contains(s) || c.getVenue().toLowerCase().contains(s) || c.getSummary().toLowerCase().contains(s))
+			if (c.getTitle().toLowerCase().contains(s) || c.getVenue().toLowerCase().contains(s) || c.getSummary().toLowerCase().contains(s) || c.getCategory().getName().toLowerCase().contains(s) || c.getCategory().getNombre().toLowerCase().contains(s))
 				if (c.getDraftMode().equals(false))
 					result.add(c);
 

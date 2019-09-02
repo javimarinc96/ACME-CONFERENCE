@@ -26,17 +26,18 @@ public class Conference extends DomainEntity {
 
 	// Attributes
 
-	private String	title;
-	private String	acronym;
-	private String	venue;
-	private Date	submissionDeadline;
-	private Date	notificationDeadline;
-	private Date	cameraDeadline;
-	private Date	startDate;
-	private Date	endDate;
-	private String	summary;
-	private Double	fee;
-	private Boolean	draftMode;
+	private String		title;
+	private String		acronym;
+	private String		venue;
+	private Date		submissionDeadline;
+	private Date		notificationDeadline;
+	private Date		cameraDeadline;
+	private Date		startDate;
+	private Date		endDate;
+	private String		summary;
+	private Double		fee;
+	private Boolean		draftMode;
+	private Category	category;
 
 
 	// Getters & setters
@@ -149,6 +150,16 @@ public class Conference extends DomainEntity {
 
 	public void setDraftMode(final Boolean draftMode) {
 		this.draftMode = draftMode;
+	}
+
+	@NotNull
+	@ManyToOne(optional = false)
+	public Category getCategory() {
+		return this.category;
+	}
+
+	public void setCategory(final Category category) {
+		this.category = category;
 	}
 
 

@@ -40,6 +40,8 @@
 		<value>/views/customization/messages</value>
 		<value>/views/section/messages</value>
 		<value>/views/quolet/messages</value>
+		<value>/views/category/messages</value>
+		<value>/views/finder/messages</value>
 	</util:list>
 
 </beans>

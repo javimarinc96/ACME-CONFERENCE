@@ -104,6 +104,7 @@
 		<property name="email" value="author1@domain.com" />
 		<property name="phoneNumber" value="" />
 		<property name="address" value="" />
+		<property name="finder" ref="finder1" />
 	</bean>
 	
 	<bean id="author2" class="domain.Author">
@@ -115,6 +116,7 @@
 		<property name="email" value="author2@domain.com" />
 		<property name="phoneNumber" value="" />
 		<property name="address" value="" />
+		<property name="finder" ref="finder2" />
 	</bean>
 
 	<!-- Reviewers -->
@@ -128,7 +130,7 @@
 		<property name="email" value="reviewer1@domain.com" />
 		<property name="phoneNumber" value="" />
 		<property name="address" value="" />
-		<property name="keywords" value="good,amazing,excellent" />
+		<property name="keywords" value="title1" />
 	</bean>
 	
 	<bean id="reviewer2" class="domain.Reviewer">
@@ -140,7 +142,7 @@
 		<property name="email" value="reviewer2@domain.com" />
 		<property name="phoneNumber" value="" />
 		<property name="address" value="" />
-		<property name="keywords" value="fantastic, well" />
+		<property name="keywords" value="title2" />
 	</bean>
 	
 	<!-- Messages -->
@@ -204,8 +206,9 @@
 		<property name="endDate" value="16/09/2019 18:00" />
 		<property name="summary" value="summary1" />
 		<property name="fee" value="20.00" />
-		<property name="draftMode" value="true" />
+		<property name="draftMode" value="false" />
 		<property name="admin" ref="admin" />
+		<property name="category" ref="category3" />
 		<property name="activities">
 			<list>
 					<ref bean="tutorial1" />
@@ -226,8 +229,9 @@
 		<property name="endDate" value="22/09/2019 18:00" />
 		<property name="summary" value="summary2" />
 		<property name="fee" value="88.00" />
-		<property name="draftMode" value="true" />
+		<property name="draftMode" value="false" />
 		<property name="admin" ref="admin" />
+		<property name="category" ref="category7" />
 		<property name="activities">
 			<list>
 					<ref bean="tutorial2" />
@@ -576,5 +580,150 @@
 		<property name="administrator" ref="admin" />
 		<property name="conference" ref="conference2" />
 	</bean>
+	
+	<!-- Categories -->
+
+	<bean id="category1" class="domain.Category">
+		<property name="name" value="CONFERENCE" />
+		<property name="nombre" value="CONFERENCIA" />
+	</bean>
+
+	<bean id="category2" class="domain.Category">
+		<property name="name" value="Computer Science" />
+		<property name="nombre" value="Informatica" />
+		<property name="parent" ref="category1" />
+	</bean>
+
+	<bean id="category3" class="domain.Category">
+		<property name="name" value="Artificial Intelligence" />
+		<property name="nombre" value="Inteligencia Artificial" />
+		<property name="parent" ref="category2" />
+	</bean>
+
+	<bean id="category4" class="domain.Category">
+		<property name="name" value="Deep Learning" />
+		<property name="nombre" value="Aprendizaje profundo" />
+		<property name="parent" ref="category3" />
+	</bean>
+
+	<bean id="category5" class="domain.Category">
+		<property name="name" value="Instance-Based learning" />
+		<property name="nombre" value='Aprendizaje basado en instancia' />
+		<property name="parent" ref="category3" />
+	</bean>
+
+	<bean id="category6" class="domain.Category">
+		<property name="name" value="Regression " />
+		<property name="nombre" value="Regresion" />
+		<property name="parent" ref="category3" />
+	</bean>
+
+	<bean id="category7" class="domain.Category">
+		<property name="name" value="Software Engineering " />
+		<property name="nombre" value="Ingenieria de Software" />
+		<property name="parent" ref="category1" />
+	</bean>
+
+	<bean id="category8" class="domain.Category">
+		<property name="name" value="Big Data" />
+		<property name="nombre" value="Big Data" />
+		<property name="parent" ref="category7" />
+	</bean>
+
+	<bean id="category9" class="domain.Category">
+		<property name="name" value="Big Processing " />
+		<property name="nombre" value="Big Processing" />
+		<property name="parent" ref="category7" />
+	</bean>
+
+	<bean id="category10" class="domain.Category">
+		<property name="name" value="Methods " />
+		<property name="nombre" value="Metodos" />
+		<property name="parent" ref="category7" />
+	</bean>
+
+	<bean id="category11" class="domain.Category">
+		<property name="name" value="Tools " />
+		<property name="nombre" value="Herramientas" />
+		<property name="parent" ref="category7" />
+	</bean>
+
+	<bean id="category12" class="domain.Category">
+		<property name="name" value="Phisics " />
+		<property name="nombre"  value="Fisicas" />
+		<property name="parent" ref="category1" />
+	</bean>
+
+	<bean id="category13" class="domain.Category">
+		<property name="name" value="Cinematic " />
+		<property name="nombre" value="Cinematica" />
+		<property name="parent" ref="category12" />
+	</bean>
+
+	<bean id="category14" class="domain.Category">
+		<property name="name" value="Electricity " />
+		<property name="nombre" value="Electricidad" />
+		<property name="parent" ref="category12" />
+	</bean>
+
+	<bean id="category15" class="domain.Category">
+		<property name="name" value="Electronics " />
+		<property name="nombre" value="Electronica" />
+		<property name="parent" ref="category12" />
+	</bean>
+
+	<bean id="category16" class="domain.Category">
+		<property name="name" value="Biology " />
+		<property name="nombre" value="Biologia" />
+		<property name="parent" ref="category1" />
+	</bean>
+
+	<bean id="category17" class="domain.Category">
+		<property name="name" value="Animals " />
+		<property name="nombre" value="Animales" />
+		<property name="parent" ref="category16" />
+	</bean>
+
+	<bean id="category18" class="domain.Category">
+		<property name="name" value="Plants " />
+		<property name="nombre" value="Plantas" />
+		<property name="parent" ref="category16" />
+	</bean>
+
+	<bean id="category19" class="domain.Category">
+		<property name="name" value="Funghis " />
+		<property name="nombre" value="Hongos" />
+		<property name="parent" ref="category16" />
+	</bean>
+	
+	<!--Finders -->
+
+	<bean id="finder1" class="domain.Finder">
+		<property name="keyWord" value="title1" />
+		<property name="startDate" value="06/02/18 20:00" />
+		<property name="endDate" value="05/03/20 22:35" />
+		<property name="maximumFee" value="15.00" />
+		<property name="category" ref="category3" />
+		<property name="conferences">
+			<list>
+				<ref bean="conference1" />
+			</list>
+		</property>
+	</bean>
+	
+	<bean id="finder2" class="domain.Finder">
+		<property name="keyWord" value="title2" />
+		<property name="startDate" value="06/02/18 20:00" />
+		<property name="endDate" value="05/03/20 22:35" />
+		<property name="maximumFee" value="15.00" />
+		<property name="category" ref="category7" />
+		<property name="conferences">
+			<list>
+				<ref bean="conference2" />
+			</list>
+		</property>
+	</bean>
+
+	
 	
 </beans>

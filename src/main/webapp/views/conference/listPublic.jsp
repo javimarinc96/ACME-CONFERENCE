@@ -32,6 +32,9 @@
 	<spring:message code="conference.title" var="titleHeader"/>
 	<display:column property="title" title="${titleHeader}"  />
 	
+	<spring:message code="conference.category" var="categoryHeader"/>
+	<display:column property="category.name" title="${categoryHeader}"  />
+	
 	<spring:message code="conference.acronym" var="acronymHeader"/>
 	<display:column property="acronym" title="${acronymHeader}" />
 	

@@ -15,6 +15,7 @@ import security.LoginService;
 import security.UserAccount;
 import security.UserAccountRepository;
 import domain.Author;
+import domain.Finder;
 
 @Service
 @Transactional
@@ -28,6 +29,9 @@ public class AuthorService {
 
 	@Autowired
 	private UserAccountRepository	userAccountRepository;
+
+	@Autowired
+	private FinderService			finderService;
 
 
 	// Constructor methods ---------------------------------------------------------
@@ -66,8 +70,11 @@ public class AuthorService {
 			userAccount.setPassword(hashedPassword);
 			final UserAccount ua = this.userAccountRepository.save(userAccount);
 			author.setUserAccount(ua);
-
+			Finder finder = new Finder();
+			finder = this.finderService.save(finder);
+			author.setFinder(finder);
 		}
+
 		final Author res = this.authorRepository.save(author);
 		return res;
 	}

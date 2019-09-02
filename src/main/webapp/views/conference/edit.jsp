@@ -86,6 +86,14 @@
 	<form:errors cssClass="error" path="fee" />
 	<br />
 	
+	<form:label path="category">
+	<spring:message code="conference.category" />:
+	</form:label>
+	<form:select path="category" >
+	<form:options items="${categories}" itemLabel="name" />
+	</form:select>	
+	<br>
+	
 	<form:label path="draftMode">
 		<spring:message code="conference.draftMode"/>
     	</form:label>

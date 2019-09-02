@@ -39,6 +39,8 @@
 		<bean class="converters.AuthorityToStringConverter" />
 		<bean class="converters.UserAccountToStringConverter" />
 		<bean class="converters.QuoletToStringConverter" />
+		<bean class="converters.CategoryToStringConverter" />
+		<bean class="converters.FinderToStringConverter" />
 		
 		<bean class="converters.StringToActorConverter" />
 		<bean class="converters.StringToAuthorConverter" />
@@ -61,6 +63,8 @@
 		<bean class="converters.StringToAuthorityConverter" />
 		<bean class="converters.StringToUserAccountConverter" />
 		<bean class="converters.StringToQuoletConverter" />
+		<bean class="converters.StringToCategoryConverter" />
+		<bean class="converters.StringToFinderConverter" />
 		
 	</util:list>
 	
