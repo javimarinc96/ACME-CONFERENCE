@@ -60,4 +60,40 @@ public interface AdministratorRepository extends JpaRepository<Administrator, In
 
 	@Query("select stddev(c.endDate-c.startDate) from Conference c")
 	Double stddevDaysPerConference();
+
+	@Query("select avg(1.0*(select count(c) from Conference c where c.category.id = cat.id)) from Category cat")
+	Double avgConferenceCategory();
+
+	@Query("select max(1.0*(select count(c) from Conference c where c.category.id = cat.id)) from Category cat")
+	Integer maxConferenceCategory();
+
+	@Query("select min(1.0*(select count(c) from Conference c where c.category.id = cat.id)) from Category cat")
+	Integer minConferenceCategory();
+
+	@Query("select stddev(1.0*(select count(c) from Conference c where c.category.id = cat.id)) from Category cat")
+	Double stddevConferenceCategory();
+
+	@Query("select avg(1.0*(select count(c) from Comment c where c.conference.id = con.id)) from Conference con")
+	Double avgCommentsConference();
+
+	@Query("select max(1.0*(select count(c) from Comment c where c.conference.id = con.id)) from Conference con")
+	Integer maxCommentsConference();
+
+	@Query("select min(1.0*(select count(c) from Comment c where c.conference.id = con.id)) from Conference con")
+	Integer minCommentsConference();
+
+	@Query("select stddev(1.0*(select count(c) from Comment c where c.conference.id = con.id)) from Conference con")
+	Double stddevCommentsConference();
+
+	@Query("select avg(1.0*(select count(c) from Comment c where c.conference.id = con.id)) from Conference con")
+	Double avgCommentsActivity();
+
+	@Query("select max(1.0*(select count(c) from Comment c where c.conference.id = con.id)) from Conference con")
+	Integer maxCommentsActivity();
+
+	@Query("select min(1.0*(select count(c) from Comment c where c.conference.id = con.id)) from Conference con")
+	Integer minCommentsActivity();
+
+	@Query("select stddev(1.0*(select count(c) from Comment c where c.conference.id = con.id)) from Conference con")
+	Double stddevCommentsActivity();
 }

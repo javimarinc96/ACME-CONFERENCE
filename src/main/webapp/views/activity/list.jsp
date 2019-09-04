@@ -47,6 +47,11 @@
 			onclick="javascript: relativeRedir('tutorial/administrator/show.do?tutorialId=${row.id}');" />
 	</display:column>
 	
+	<display:column titleKey="activity.comments">
+			<input type="submit" name="comments" value="<spring:message code="activity.comments" />"
+				onclick="javascript: relativeRedir('comment/listActivity.do?activityId=${row.id}');" />
+	</display:column>
+	
 	<security:authorize access="hasRole('ADMIN')">
 	<display:column titleKey="activity.edit">
 		<input type="submit" name="edit" value="<spring:message code="activity.edit" />"
@@ -96,6 +101,11 @@
 	<display:column titleKey="activity.show">
 		<input type="submit" name="show" value="<spring:message code="activity.show" />"
 			onclick="javascript: relativeRedir('panel/administrator/show.do?panelId=${row.id}');" />
+	</display:column>
+	
+	<display:column titleKey="activity.comments">
+			<input type="submit" name="comments" value="<spring:message code="activity.comments" />"
+				onclick="javascript: relativeRedir('comment/listActivity.do?activityId=${row.id}');" />
 	</display:column>
 	
 	<security:authorize access="hasRole('ADMIN')">
@@ -149,6 +159,11 @@
 	<display:column titleKey="activity.show">
 		<input type="submit" name="show" value="<spring:message code="activity.show" />"
 			onclick="javascript: relativeRedir('presentation/administrator/show.do?presentationId=${row.id}');" />
+	</display:column>
+	
+	<display:column titleKey="activity.comments">
+			<input type="submit" name="comments" value="<spring:message code="activity.comments" />"
+				onclick="javascript: relativeRedir('comment/listActivity.do?activityId=${row.id}');" />
 	</display:column>
 	
 	<security:authorize access="hasRole('ADMIN')">

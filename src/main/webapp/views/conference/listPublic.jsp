@@ -62,6 +62,16 @@
 	<spring:message code="conference.fee" var="feeHeader"/>
 	<display:column property="fee" title="${feeHeader}" />
 	
+	<display:column titleKey="conference.activities">
+			<input type="submit" name="activities" value="<spring:message code="conference.activities" />"
+				onclick="javascript: relativeRedir('activity/administrator/list.do?conferenceId=${row.id}');" />
+	</display:column>
+	
+	<display:column titleKey="conference.comments">
+			<input type="submit" name="comments" value="<spring:message code="conference.comments" />"
+				onclick="javascript: relativeRedir('comment/listConference.do?conferenceId=${row.id}');" />
+	</display:column>
+	
 	<!-- <display:column titleKey="conference.quolets">
 			<input type="submit" name="quolets" value="<spring:message code="conference.quolets" />"
 				onclick="javascript: relativeRedir('quolet/administrator/listConference.do?conferenceId=${row.id}');" />

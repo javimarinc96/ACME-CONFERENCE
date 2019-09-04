@@ -59,7 +59,9 @@
 		<security:intercept-url pattern="/report/reviewer/save.do" access="hasRole('REVIEWER')" /> 
 		<security:intercept-url pattern="/report/reviewer/delete.do" access="hasRole('REVIEWER')" /> 
 		
-		<security:intercept-url pattern="/activity/administrator/**" access="hasRole('ADMIN')" />
+		<security:intercept-url pattern="/activity/administrator/list.do" access="permitAll"  />
+		<security:intercept-url pattern="/comment/**" access="permitAll"  />
+		
 		<security:intercept-url pattern="/tutorial/administrator/**" access="hasRole('ADMIN')" />
 		<security:intercept-url pattern="/panel/administrator/**" access="hasRole('ADMIN')" />
 		<security:intercept-url pattern="/presentation/administrator/**" access="hasRole('ADMIN')" />
