@@ -134,7 +134,7 @@ public class SubmissionAuthorController extends AbstractController {
 		result.addObject("submission", s);
 		
 		if (!s.getAuthor().equals(a) || s.getConference().getCameraDeadline().before(new Date()) 
-				|| s.getCameraReady() != null || s.getStatus() != "ACCEPTED")
+				|| s.getCameraReady() != null || !s.getStatus().equals("ACCEPTED"))
 			result = new ModelAndView("redirect:list.do");
 
 		return result;
@@ -192,14 +192,20 @@ public class SubmissionAuthorController extends AbstractController {
 	public ModelAndView makeDecission(@RequestParam final int submissionId) {
 
 		ModelAndView result;
+		
+		final int conferenceId = this.SubmissionService.findOne(submissionId).getConference().getId();
+		
+		try{
 
 		this.SubmissionService.makeDecission(submissionId);
-
-		final int conferenceId = this.SubmissionService.findOne(submissionId).getConference().getId();
 
 		result = new ModelAndView("redirect:/submission/author/listByConference.do?conferenceId=" + conferenceId);
 
 		return result;
+		
+		}catch(Throwable oops){
+			return new ModelAndView("redirect:/submission/author/listByConference.do?conferenceId=" + conferenceId);
+		}
 	}
 
 	@RequestMapping(value = "/assignReviewers", method = RequestMethod.GET)

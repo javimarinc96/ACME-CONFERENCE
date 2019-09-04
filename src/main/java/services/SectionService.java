@@ -2,6 +2,7 @@
 package services;
 
 import java.util.Collection;
+import java.util.Date;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -10,6 +11,7 @@ import org.springframework.util.Assert;
 
 import repositories.SectionRepository;
 import security.Authority;
+import domain.Conference;
 import domain.Section;
 import domain.Tutorial;
 
@@ -28,6 +30,9 @@ public class SectionService {
 
 	@Autowired
 	private TutorialService		tutorialService;
+	
+	@Autowired
+	private ConferenceService	conferenceService;
 
 
 	// Constructor methods ---------------------------------------------------------
@@ -69,10 +74,15 @@ public class SectionService {
 
 		Assert.notNull(s);
 		Assert.isTrue(s.getId() != 0);
+		
 
 		this.actorService.checkAuth(Authority.ADMIN);
 
 		final Tutorial t = this.tutorialService.findTutorialBySection(s.getId());
+		
+		Conference c = this.conferenceService.findConferenceByActivity(t.getId());
+		
+		Assert.isTrue(c.getStartDate().after(new Date()));
 
 		t.getSections().remove(s);
 

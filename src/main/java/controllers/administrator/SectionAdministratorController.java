@@ -99,6 +99,10 @@ public class SectionAdministratorController extends AbstractController {
 
 	@RequestMapping(value = "/delete", method = RequestMethod.GET)
 	public ModelAndView delete(@RequestParam final int sectionId) {
+		
+		try{
+			
+		
 		ModelAndView result;
 
 		Section res;
@@ -110,6 +114,9 @@ public class SectionAdministratorController extends AbstractController {
 		result = new ModelAndView("redirect:/conference/administrator/list.do");
 
 		return result;
+		}catch(Throwable oops){
+			return new ModelAndView("redirect:/conference/administrator/list.do");
+		}
 	}
 
 	//Ancillary methods

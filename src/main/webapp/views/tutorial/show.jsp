@@ -17,6 +17,8 @@
 <%@taglib prefix="security" uri="http://www.springframework.org/security/tags"%>
 <%@taglib prefix="display" uri="http://displaytag.sf.net"%>
 
+<jsp:useBean id="now" class="java.util.Date" />
+
 
 	<fieldset>
 
@@ -58,17 +60,28 @@
 	
 	<security:authorize access="hasRole('ADMIN')">
 	<display:column titleKey="tutorial.delete">
+	<jstl:choose>
+	 <jstl:when test="${c.startDate gt now}">
 		<input type="submit" name="delete" value="<spring:message code="tutorial.delete" />"
 			onclick="javascript: relativeRedir('section/administrator/delete.do?sectionId=${row.id}');" />
+			</jstl:when>
+			   <jstl:otherwise>
+    <spring:message code="section.no.edit" />
+   </jstl:otherwise>
+			 </jstl:choose>
 	</display:column>
 	</security:authorize>
+
+
 	
 </display:table>
 
 <security:authorize access="hasRole('ADMIN')">	
+	 <jstl:if test="${c.startDate gt now}">
 	<button type="button" onclick="javascript: relativeRedir('section/administrator/create.do?tutorialId=${tutorial.id}')">
 				<spring:message code="tutorial.create" />
 				</button>
+				</jstl:if>
 </security:authorize>
 
 	

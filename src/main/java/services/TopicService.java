@@ -63,6 +63,11 @@ public class TopicService {
 	public void flush() {
 		this.topicRepository.flush();
 	}
+	
+	public Collection<Topic> findTopicsInUse() {
+		
+		return this.topicRepository.findTopicsInUse();
+	}
 
 	public Topic save(final Topic topic) {
 		Assert.notNull(topic);

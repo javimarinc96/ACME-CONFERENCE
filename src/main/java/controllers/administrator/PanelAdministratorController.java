@@ -74,6 +74,7 @@ public class PanelAdministratorController extends AbstractController {
 	@RequestMapping(value = "/delete", method = RequestMethod.GET)
 	public ModelAndView delete(@RequestParam final int panelId) {
 		ModelAndView result;
+		try{
 
 		Panel res;
 
@@ -83,6 +84,10 @@ public class PanelAdministratorController extends AbstractController {
 		result = new ModelAndView("redirect:/conference/administrator/list.do");
 
 		return result;
+		}catch(Throwable oops){
+			return new ModelAndView("redirect:/conference/administrator/list.do");
+		}
+		
 	}
 
 	@RequestMapping(value = "/create", method = RequestMethod.POST, params = "save")

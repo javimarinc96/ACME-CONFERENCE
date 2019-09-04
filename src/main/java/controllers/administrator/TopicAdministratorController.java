@@ -36,11 +36,15 @@ public class TopicAdministratorController extends AbstractController {
 
 		ModelAndView res;
 		Collection<Topic> topics;
+		Collection<Topic> used;
 
 		topics = this.TopicService.findAll();
+		used = this.TopicService.findTopicsInUse();
+	
 
 		res = new ModelAndView("topic/list");
 		res.addObject("topics", topics);
+		res.addObject("used", used);
 		res.addObject("requestURI", "topic/administrator/list.do");
 
 		return res;
@@ -88,12 +92,18 @@ public class TopicAdministratorController extends AbstractController {
 	public ModelAndView delete(@RequestParam final int topicId) {
 
 		ModelAndView res;
+		
+		try{
+		
 		Topic sp;
 		sp = this.TopicService.findOne(topicId);
 
 		this.TopicService.delete(sp);
 		res = new ModelAndView("redirect:list.do");
 		return res;
+		}catch(Throwable oops){
+			return new ModelAndView("redirect:list.do");
+		}
 	}
 
 	@RequestMapping(value = "/save", method = RequestMethod.POST, params = "save")

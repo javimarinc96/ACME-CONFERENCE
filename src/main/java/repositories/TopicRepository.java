@@ -18,5 +18,8 @@ public interface TopicRepository extends JpaRepository<Topic, Integer> {
 
 	@Query("select t from Topic t where t.englishName = ?1")
 	Topic findTopicbyEnglishName(String englishName);
+	
+	@Query("select distinct t from Message m join m.topic t")
+	Collection<Topic> findTopicsInUse();
 
 }

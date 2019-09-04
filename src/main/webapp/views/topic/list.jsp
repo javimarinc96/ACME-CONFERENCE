@@ -15,9 +15,14 @@
 <%@taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@taglib prefix="security" uri="http://www.springframework.org/security/tags"%>
 <%@taglib prefix="display" uri="http://displaytag.sf.net"%>
+<%@ taglib uri = "http://java.sun.com/jsp/jstl/core" prefix = "c" %>
+<%@ taglib uri = "http://java.sun.com/jsp/jstl/functions" prefix = "fn" %>
 
 
 <display:table name="topics" id="row" requestURI="${requestURI}" pagesize="5" class="displaytag">
+
+	<jstl:set var = "used" value = "${topicsUsed}"/>
+	 <jstl:set var = "fila" value = "${row}"/>
 	
 	<spring:message code="topic.spanishName" var="spanishHeader"/>
 	<display:column property="spanishName" title="${spanishHeader}" />
@@ -40,8 +45,15 @@
 	
 	<security:authorize access="hasRole('ADMIN')">
 	<display:column titleKey="topic.delete">
+	  <jstl:choose>
+   		<jstl:when test="${!fn:contains(used, fila)}">
 		<input type="submit" name="delete" value="<spring:message code="topic.delete" />"
 			onclick="javascript: relativeRedir('topic/administrator/delete.do?topicId=${row.id}');" />
+			</jstl:when>
+			   <jstl:otherwise>
+    		<spring:message code="topic.no.delete" />
+   </jstl:otherwise>
+     </jstl:choose>
 	</display:column>
 	</security:authorize>
 

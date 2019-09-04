@@ -26,7 +26,7 @@
 
 	<!-- Data source -->
 
-	 <bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource"	destroy-method="close">
+	  <bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource"	destroy-method="close">
 		<property name="driverClass" value="com.mysql.jdbc.Driver" />
 		<property name="jdbcUrl" value="jdbc:mysql://localhost:3306/Acme-Conference" />
 		<property name="user" value="acme-user" />
@@ -35,11 +35,11 @@
 		<property name="maxPoolSize" value="5" />
 	</bean> 
 	
-	 <!--  <bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource" destroy-method="close">
+	<!--  <bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource" destroy-method="close">
 		<property name="driverClass" value="com.mysql.jdbc.Driver" />
-		<property name="jdbcUrl" value="jdbc:mysql://btiocjes4evwenzdrhkm-mysql.services.clever-cloud.com:3306/btiocjes4evwenzdrhkm" />
-		<property name="user" value="ufeshbbgxtdwsait" />
-		<property name="password" value="XZDF6lpPxa0P57oLDvps" />
+		<property name="jdbcUrl" value="jdbc:mysql://btogm58vaswecjuz6cap-mysql.services.clever-cloud.com:3306/btogm58vaswecjuz6cap" />
+		<property name="user" value="utthwonhdjraylrp" />
+		<property name="password" value="LLIlISRn1iiU8Krcj5aC" />
 		<property name="minPoolSize" value="1" />
 		<property name="maxPoolSize" value="5" />  
 	</bean>  -->

@@ -300,11 +300,11 @@ public class ConferenceService {
 
 	public Conference findConferenceByActivity(final int activityId) {
 
-		Actor principal;
+		//Actor principal;
 
 		// Principal must be an Admin
-		principal = this.actorService.findByPrincipal();
-		Assert.isInstanceOf(Administrator.class, principal);
+//		principal = this.actorService.findByPrincipal();
+//		Assert.isInstanceOf(Administrator.class, principal);
 
 		final Conference result = this.conferenceRepository.findConferenceByActivityId(activityId);
 

@@ -68,8 +68,10 @@ public class TutorialAdministratorController extends AbstractController {
 		Tutorial tutorial;
 		tutorial = this.tutorialService.findOne(tutorialId);
 		final Collection<Section> sections = tutorial.getSections();
+		final Conference c = this.conferenceService.findConferenceByActivity(tutorialId);
 		result = new ModelAndView("tutorial/show");
 		result.addObject("tutorial", tutorial);
+		result.addObject("c", c);
 		result.addObject("sections", sections);
 
 		return result;
@@ -77,6 +79,8 @@ public class TutorialAdministratorController extends AbstractController {
 
 	@RequestMapping(value = "/delete", method = RequestMethod.GET)
 	public ModelAndView delete(@RequestParam final int tutorialId) {
+		
+		try{
 		ModelAndView result;
 
 		Tutorial res;
@@ -87,6 +91,10 @@ public class TutorialAdministratorController extends AbstractController {
 		result = new ModelAndView("redirect:/conference/administrator/list.do");
 
 		return result;
+		
+		}catch(Throwable oops){
+			return new ModelAndView("redirect:/conference/administrator/list.do");
+		}
 	}
 
 	@RequestMapping(value = "/create", method = RequestMethod.POST, params = "save")
