@@ -1,6 +1,8 @@
 
 package controllers.administrator;
 
+import java.util.Date;
+
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,8 +13,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import services.ConferenceService;
 import services.PanelService;
 import controllers.AbstractController;
+import domain.Conference;
 import domain.Panel;
 
 @Controller
@@ -21,6 +25,9 @@ public class PanelAdministratorController extends AbstractController {
 
 	@Autowired
 	private PanelService	panelService;
+	
+	@Autowired
+	private ConferenceService	conferenceService;
 
 
 	@RequestMapping(value = "/create", method = RequestMethod.GET)
@@ -43,6 +50,12 @@ public class PanelAdministratorController extends AbstractController {
 		res = this.editModelAndView(panel);
 
 		res.addObject("panel", panel);
+		
+		final Conference c = this.conferenceService.findConferenceByActivity(panelId);
+		
+		if(c.getStartDate().before(new Date())){
+			res = new ModelAndView("redirect:/conference/administrator/list.do");
+		}
 
 		return res;
 	}

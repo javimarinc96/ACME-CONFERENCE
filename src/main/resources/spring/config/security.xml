@@ -59,11 +59,31 @@
 		<security:intercept-url pattern="/report/reviewer/save.do" access="hasRole('REVIEWER')" /> 
 		<security:intercept-url pattern="/report/reviewer/delete.do" access="hasRole('REVIEWER')" /> 
 		
-		<security:intercept-url pattern="/activity/administrator/**" access="hasRole('ADMIN')" />
-		<security:intercept-url pattern="/tutorial/administrator/**" access="hasRole('ADMIN')" />
-		<security:intercept-url pattern="/panel/administrator/**" access="hasRole('ADMIN')" />
-		<security:intercept-url pattern="/presentation/administrator/**" access="hasRole('ADMIN')" />
-		<security:intercept-url pattern="/section/administrator/**" access="hasRole('ADMIN')" />
+		<security:intercept-url pattern="/activity/administrator/list.do" access="permitAll"  />
+		<security:intercept-url pattern="/comment/**" access="permitAll"  />
+		
+		
+		<security:intercept-url pattern="/tutorial/administrator/create.do" access="hasRole('ADMIN')" />
+		<security:intercept-url pattern="/tutorial/administrator/edit.do" access="hasRole('ADMIN')" />
+		<security:intercept-url pattern="/tutorial/administrator/delete.do" access="hasRole('ADMIN')" />
+		<security:intercept-url pattern="/tutorial/administrator/show.do" access="permitAll"/>
+		
+		<security:intercept-url pattern="/panel/administrator/create.do" access="hasRole('ADMIN')" />
+		<security:intercept-url pattern="/panel/administrator/edit.do" access="hasRole('ADMIN')" />
+		<security:intercept-url pattern="/panel/administrator/delete.do" access="hasRole('ADMIN')" />
+		<security:intercept-url pattern="/panel/administrator/show.do" access="permitAll"/>
+		
+		<security:intercept-url pattern="/presentation/administrator/create.do" access="hasRole('ADMIN')" />
+		<security:intercept-url pattern="/presentation/administrator/edit.do" access="hasRole('ADMIN')" />
+		<security:intercept-url pattern="/presentation/administrator/delete.do" access="hasRole('ADMIN')" />
+		<security:intercept-url pattern="/presentation/administrator/show.do" access="permitAll"/>	
+
+		<security:intercept-url pattern="/section/administrator/create.do" access="hasRole('ADMIN')" />
+		<security:intercept-url pattern="/section/administrator/save.do" access="hasRole('ADMIN')" />
+		<security:intercept-url pattern="/section/administrator/delete.do" access="hasRole('ADMIN')" />
+		<security:intercept-url pattern="/section/administrator/show.do" access="permitAll"/>
+		<security:intercept-url pattern="/section/administrator/list.do" access="permitAll"/>
+		
 		<security:intercept-url pattern="/customization/administrator/**" access="hasRole('ADMIN')" />
 		<security:intercept-url pattern="/topic/administrator/**" access="hasRole('ADMIN')" />
 		

@@ -131,9 +131,12 @@ public class CategoryAdministratorController extends AbstractController {
 		Category category;
 
 		category = this.categoryService.findOne(categoryId);
+		
+		Collection<Category> hijas = this.categoryService.findCategoryHijas(categoryId);
 
 		result = new ModelAndView("category/show");
 		result.addObject("category", category);
+		result.addObject("hijas", hijas);
 		result.addObject("categoryId", categoryId);
 
 		return result;

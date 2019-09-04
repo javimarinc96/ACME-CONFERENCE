@@ -3,6 +3,8 @@ package services;
 
 import java.util.Collection;
 import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
 
 import org.apache.commons.lang.RandomStringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -256,19 +258,27 @@ public class SubmissionService {
 		Assert.isTrue(s.getStatus().equals("UNDER-REVIEW"));
 		Assert.isTrue(s.getConference().getNotificationDeadline().after(new Date()));
 
-		final String summary = s.getConference().getSummary();
-		final String title = s.getConference().getTitle();
+		final String summary = s.getConference().getSummary().toLowerCase();
+		final String title = s.getConference().getTitle().toLowerCase();
 
 		final Collection<Reviewer> all = this.reviewerService.findAll();
 
-		for (final Reviewer r : all)
-
-			if (r.getKeywords().contains(summary) || r.getKeywords().contains(title)) {
-				final Collection<Submission> subs = r.getSubmissions();
-				subs.add(s);
-				r.setSubmissions(subs);
-				this.reviewerService.save(r);
+		for (final Reviewer r : all) {
+			
+			final String[] words = r.getKeywords().split(",");
+			
+			for (final String word : words){
+				if (title.contains(word.toLowerCase()) || summary.contains(word.toLowerCase())) {
+					final Collection<Submission> subs = r.getSubmissions();
+					subs.add(s);
+					r.setSubmissions(subs);
+					this.reviewerService.save(r);
+				}
 			}
+	        Set<Submission> hashSet = new HashSet<Submission>(r.getSubmissions());
+	        r.getSubmissions().clear();
+	        r.getSubmissions().addAll(hashSet);
+		}
 
 		s.setAssignment(true);
 		this.submissionRepository.save(s);

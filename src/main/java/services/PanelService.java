@@ -2,6 +2,7 @@
 package services;
 
 import java.util.Collection;
+import java.util.Date;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -111,6 +112,8 @@ public class PanelService {
 		Assert.isInstanceOf(Administrator.class, principal);
 
 		final Conference c = this.conferenceService.findConferenceByActivity(s.getId());
+		
+		Assert.isTrue(c.getStartDate().after(new Date()));
 
 		c.getActivities().remove(s);
 

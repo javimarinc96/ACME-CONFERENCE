@@ -16,6 +16,7 @@
 <%@taglib prefix="security" uri="http://www.springframework.org/security/tags"%>
 <%@taglib prefix="display" uri="http://displaytag.sf.net"%>
 
+<jsp:useBean id="now" class="java.util.Date" />
 
 <h2> <spring:message code="activity.tutorials"/> </h2>
 <display:table name="tutorials" id="row" requestURI="${requestURI}" pagesize="5" class="displaytag">
@@ -47,18 +48,33 @@
 			onclick="javascript: relativeRedir('tutorial/administrator/show.do?tutorialId=${row.id}');" />
 	</display:column>
 	
+	<display:column titleKey="activity.comments">
+			<input type="submit" name="comments" value="<spring:message code="activity.comments" />"
+				onclick="javascript: relativeRedir('comment/listActivity.do?activityId=${row.id}');" />
+	</display:column>
+	
 	<security:authorize access="hasRole('ADMIN')">
 	<display:column titleKey="activity.edit">
+	<jstl:if test="${conference.startDate gt now}">
 		<input type="submit" name="edit" value="<spring:message code="activity.edit" />"
 			onclick="javascript: relativeRedir('tutorial/administrator/edit.do?tutorialId=${row.id}');" />
+			</jstl:if>
+				<jstl:if test="${conference.startDate lt now}">
+		<spring:message code="activity.no.edit" />
+			</jstl:if>
 	</display:column>
 	</security:authorize>
 	
 	<security:authorize access="hasRole('ADMIN')">
 	<display:column titleKey="activity.delete">
+		<jstl:if test="${conference.startDate gt now}">
 		<input type="submit" name="delete" value="<spring:message code="activity.delete" />"
 			onclick="javascript: relativeRedir('tutorial/administrator/delete.do?tutorialId=${row.id}');" />
-	</display:column>
+  	 </jstl:if>
+			<jstl:if test="${conference.startDate lt now}">
+		<spring:message code="activity.no.edit" />
+			</jstl:if>
+			</display:column>
 	</security:authorize>
 
 </display:table>
@@ -98,18 +114,33 @@
 			onclick="javascript: relativeRedir('panel/administrator/show.do?panelId=${row.id}');" />
 	</display:column>
 	
+	<display:column titleKey="activity.comments">
+			<input type="submit" name="comments" value="<spring:message code="activity.comments" />"
+				onclick="javascript: relativeRedir('comment/listActivity.do?activityId=${row.id}');" />
+	</display:column>
+	
 	<security:authorize access="hasRole('ADMIN')">
 	<display:column titleKey="activity.edit">
+	<jstl:if test="${conference.startDate gt now}">
 		<input type="submit" name="edit" value="<spring:message code="activity.edit" />"
 			onclick="javascript: relativeRedir('panel/administrator/edit.do?panelId=${row.id}');" />
+			</jstl:if>
+			<jstl:if test="${conference.startDate lt now}">
+		<spring:message code="activity.no.edit" />
+			</jstl:if>
 	</display:column>
 	</security:authorize>
 	
 	
 	<security:authorize access="hasRole('ADMIN')">
 	<display:column titleKey="activity.delete">
+	<jstl:if test="${conference.startDate gt now}">
 		<input type="submit" name="delete" value="<spring:message code="activity.delete" />"
 			onclick="javascript: relativeRedir('panel/administrator/delete.do?panelId=${row.id}');" />
+				</jstl:if>
+			<jstl:if test="${conference.startDate lt now}">
+		<spring:message code="activity.no.edit" />
+			</jstl:if>
 	</display:column>
 	</security:authorize>
 	
@@ -151,17 +182,32 @@
 			onclick="javascript: relativeRedir('presentation/administrator/show.do?presentationId=${row.id}');" />
 	</display:column>
 	
+	<display:column titleKey="activity.comments">
+			<input type="submit" name="comments" value="<spring:message code="activity.comments" />"
+				onclick="javascript: relativeRedir('comment/listActivity.do?activityId=${row.id}');" />
+	</display:column>
+	
 	<security:authorize access="hasRole('ADMIN')">
 	<display:column titleKey="activity.edit">
+		<jstl:if test="${conference.startDate gt now}">
 		<input type="submit" name="edit" value="<spring:message code="activity.edit" />"
 			onclick="javascript: relativeRedir('presentation/administrator/edit.do?presentationId=${row.id}');" />
+			</jstl:if>
+			<jstl:if test="${conference.startDate lt now}">
+		<spring:message code="activity.no.edit" />
+			</jstl:if>
 	</display:column>
 	</security:authorize>
 	
 	<security:authorize access="hasRole('ADMIN')">
 	<display:column titleKey="activity.delete">
+	<jstl:if test="${conference.startDate gt now}">
 		<input type="submit" name="delete" value="<spring:message code="activity.delete" />"
 			onclick="javascript: relativeRedir('presentation/administrator/delete.do?presentationId=${row.id}');" />
+			</jstl:if>
+			<jstl:if test="${conference.startDate lt now}">
+		<spring:message code="activity.no.edit" />
+			</jstl:if>
 	</display:column>
 	</security:authorize>
 	

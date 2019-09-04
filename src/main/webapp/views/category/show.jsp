@@ -37,6 +37,20 @@
     <b><spring:message code="category.parent"/></b>: <jstl:out value="${category.parent.name}"/>
     <br/>
     
+    
+    
+<h2> <spring:message code="category.subCategories"/> </h2>
+<display:table pagesize="5" name="hijas" id="row" requestURI="${requestURI}" class="displaytag table">
+
+	<spring:message code="category.name" var="nameHeader"/>
+	<display:column property="name" title="${nameHeader}" />
+	
+	<spring:message code="category.nombre" var="nombreHeader"/>
+	<display:column property="nombre" title="${nombreHeader}" />
+	
+</display:table>
+    
+    
 <!-- Cancel -->
 
 <security:authorize access="hasRole('ADMIN')">	

@@ -61,9 +61,11 @@ public class ActivityAdministratorController extends AbstractController {
 
 		ModelAndView result = new ModelAndView("activity/list");
 
-		if (c.getDraftMode().equals(true) || c.getStartDate().before(new Date()))
-			result = new ModelAndView("redirect:conference/administrator/list.do");
+		if (c.getDraftMode().equals(true))
+			result = new ModelAndView("redirect:welcome/index.do");
 
+		result.addObject("conference", c);
+		
 		result.addObject("tutorials", tutorials);
 		result.addObject("panels", panels);
 		result.addObject("presentations", presentations);

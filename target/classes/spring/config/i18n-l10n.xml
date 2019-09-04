@@ -42,6 +42,7 @@
 		<value>/views/quolet/messages</value>
 		<value>/views/category/messages</value>
 		<value>/views/finder/messages</value>
+		<value>/views/comment/messages</value>
 	</util:list>
 
 </beans>

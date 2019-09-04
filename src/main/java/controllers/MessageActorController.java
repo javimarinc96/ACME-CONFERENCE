@@ -80,10 +80,8 @@ public class MessageActorController extends AbstractController {
 		ModelAndView res;
 		final Collection<Topic> topics = this.topicService.findAll();
 
-		final Actor actor = this.actorService.findByPrincipal();
 		if (binding.hasErrors()) {
 			System.out.println(binding.getAllErrors());
-			newMessage.setSender(actor);
 			res = this.createEditModelAndView(newMessage);
 			res.addObject("topics", topics);
 		} else
@@ -91,6 +89,7 @@ public class MessageActorController extends AbstractController {
 				this.messageService.save(newMessage);
 				res = new ModelAndView("redirect:/message/actor/list.do");
 			} catch (final Throwable error) {
+				error.printStackTrace();
 				res = this.createEditModelAndView(newMessage, "folder.error.save");
 				res.addObject("topics", topics);
 			}
@@ -133,6 +132,7 @@ public class MessageActorController extends AbstractController {
 				res = new ModelAndView("redirect:/message/actor/list.do");
 			} catch (final Throwable error) {
 				res = this.broadcastModelAndView(newMessage, "folder.error.save");
+				error.printStackTrace();
 				res.addObject("topics", topics);
 				res.addObject("action", "message/actor/broadcast.do");
 			}
@@ -173,6 +173,7 @@ public class MessageActorController extends AbstractController {
 				this.messageService.broadcastAuthors(newMessage);
 				res = new ModelAndView("redirect:/message/actor/list.do");
 			} catch (final Throwable error) {
+				error.printStackTrace();
 				res = this.broadcastModelAndView(newMessage, "folder.error.save");
 				res.addObject("topics", topics);
 				res.addObject("action", "message/actor/broadcastAuthors.do");
@@ -214,6 +215,7 @@ public class MessageActorController extends AbstractController {
 				this.messageService.broadcastRegisteredAuthors(newMessage);
 				res = new ModelAndView("redirect:/message/actor/list.do");
 			} catch (final Throwable error) {
+				error.printStackTrace();
 				res = this.broadcastModelAndView(newMessage, "folder.error.save");
 				res.addObject("topics", topics);
 				res.addObject("action", "message/actor/broadcastRegisteredAuthors.do");
@@ -255,6 +257,7 @@ public class MessageActorController extends AbstractController {
 				this.messageService.broadcastSubmissionAuthors(newMessage);
 				res = new ModelAndView("redirect:/message/actor/list.do");
 			} catch (final Throwable error) {
+				error.printStackTrace();
 				res = this.broadcastModelAndView(newMessage, "folder.error.save");
 				res.addObject("topics", topics);
 				res.addObject("action", "message/actor/broadcastSubmissionAuthors.do");

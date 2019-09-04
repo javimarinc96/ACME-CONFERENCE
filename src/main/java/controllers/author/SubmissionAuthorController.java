@@ -129,12 +129,13 @@ public class SubmissionAuthorController extends AbstractController {
 		Assert.isInstanceOf(Author.class, principal);
 		final Author a = this.authorService.findByPrincipal();
 
-		if (!s.getAuthor().equals(a))
-			result = new ModelAndView("redirect:list.do");
-
 		result = new ModelAndView("submission/camera");
 
 		result.addObject("submission", s);
+		
+		if (!s.getAuthor().equals(a) || s.getConference().getCameraDeadline().before(new Date()) 
+				|| s.getCameraReady() != null || s.getStatus() != "ACCEPTED")
+			result = new ModelAndView("redirect:list.do");
 
 		return result;
 	}

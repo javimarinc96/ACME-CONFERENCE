@@ -2,6 +2,7 @@
 package controllers.administrator;
 
 import java.util.Collection;
+import java.util.Date;
 
 import javax.validation.Valid;
 
@@ -13,8 +14,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import services.ConferenceService;
 import services.TutorialService;
 import controllers.AbstractController;
+import domain.Conference;
 import domain.Section;
 import domain.Tutorial;
 
@@ -24,6 +27,9 @@ public class TutorialAdministratorController extends AbstractController {
 
 	@Autowired
 	private TutorialService	tutorialService;
+	
+	@Autowired
+	private ConferenceService conferenceService;
 
 
 	@RequestMapping(value = "/create", method = RequestMethod.GET)
@@ -41,11 +47,17 @@ public class TutorialAdministratorController extends AbstractController {
 	public ModelAndView edit(@RequestParam final int tutorialId) {
 		ModelAndView res;
 		Tutorial tutorial;
-
+		
 		tutorial = this.tutorialService.findOne(tutorialId);
 		res = this.editModelAndView(tutorial);
 
 		res.addObject("tutorial", tutorial);
+		
+		final Conference c = this.conferenceService.findConferenceByActivity(tutorialId);
+		
+		if(c.getStartDate().before(new Date())){
+			res = new ModelAndView("redirect:/conference/administrator/list.do");
+		}
 
 		return res;
 	}

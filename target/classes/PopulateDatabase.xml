@@ -724,6 +724,38 @@
 		</property>
 	</bean>
 
+	<!-- Comments -->
 	
+	<bean id="comment1" class="domain.Comment">
+		<property name="title" value="title1" />
+		<property name="moment" value="19/05/2019 15:00" />
+		<property name="text" value="text1" />
+		<property name="author" value="author1" />
+		<property name="conference" ref="conference1" />
+	</bean>
+	
+	<bean id="comment2" class="domain.Comment">
+		<property name="title" value="title2" />
+		<property name="moment" value="20/05/2019 15:00" />
+		<property name="text" value="text2" />
+		<property name="author" value="unknown" />
+		<property name="conference" ref="conference2" />
+	</bean>
+	
+	<bean id="comment3" class="domain.Comment">
+		<property name="title" value="title3" />
+		<property name="moment" value="20/05/2019 15:00" />
+		<property name="text" value="text3" />
+		<property name="author" value="reviewer1" />
+		<property name="activity" ref="tutorial1" />
+	</bean>
+	
+	<bean id="comment4" class="domain.Comment">
+		<property name="title" value="title4" />
+		<property name="moment" value="20/05/2019 15:00" />
+		<property name="text" value="text4" />
+		<property name="author" value="unknown" />
+		<property name="activity" ref="panel1" />
+	</bean>
 	
 </beans>

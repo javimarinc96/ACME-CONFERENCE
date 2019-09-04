@@ -59,8 +59,6 @@
 	
 <!-- Cancel -->
 
-<security:authorize access="hasRole('ADMIN')">	
-				<button type="button" onclick="javascript: relativeRedir('conference/administrator/list.do')">
-				<spring:message code="presentation.cancel" />
+				<button type="button" onclick="javascript: relativeRedir('welcome/index.do')">
+				<spring:message code="tutorial.cancel" />
 				</button>
-</security:authorize>

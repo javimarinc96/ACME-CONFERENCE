@@ -2,6 +2,7 @@
 package services;
 
 import java.util.Collection;
+import java.util.Date;
 import java.util.HashSet;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -127,6 +128,8 @@ public class TutorialService {
 		Assert.isInstanceOf(Administrator.class, principal);
 
 		final Conference c = this.conferenceService.findConferenceByActivity(s.getId());
+		
+		Assert.isTrue(c.getStartDate().after(new Date()));
 
 		c.getActivities().remove(s);
 

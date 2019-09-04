@@ -47,6 +47,22 @@
 	<b><spring:message code="submission.conference"></spring:message>:</b><jstl:out value="${submission.conference.title}"></jstl:out>
 	<br />
 	
+	<jstl:if test="${submission.cameraReady != null}">
+	
+	<b><spring:message code="submission.cameraTitle"></spring:message>:</b><jstl:out value="${submission.cameraReady.title}"></jstl:out>
+	<br />
+	
+	<b><spring:message code="submission.cameraAuthors"></spring:message>:</b><jstl:out value="${submission.cameraReady.authors}"></jstl:out>
+	<br />
+	
+	<b><spring:message code="submission.cameraSummary"></spring:message>:</b><jstl:out value="${submission.cameraReady.summary}"></jstl:out>
+	<br />
+	
+	<b><spring:message code="submission.cameraDocument"></spring:message>:</b><jstl:out value="${submission.cameraReady.document}"></jstl:out>
+	<br />
+	
+	</jstl:if>
+	
 	</fieldset>
 
 	<br />

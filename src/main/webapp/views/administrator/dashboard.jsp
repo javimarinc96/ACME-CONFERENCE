@@ -32,6 +32,12 @@
 	var="conferenceSubmissionsHeader" />
 <spring:message code="administrator.dashboard.conference.days"
 	var="conferenceDaysHeader" />
+<spring:message code="administrator.dashboard.conference.category"
+	var="conferenceCategoryHeader" />
+<spring:message code="administrator.dashboard.comments.conference"
+	var="commentsConferenceHeader" />
+<spring:message code="administrator.dashboard.comments.activity"
+	var="commentsActivityHeader" />
 
 <!--  Custom table style -->
 <head>
@@ -121,6 +127,70 @@
 		<td><jstl:out value="${minDaysConference}"></jstl:out></td>
 		<td><jstl:out value="${maxDaysConference}"></jstl:out></td>
 		<td><jstl:out value="${stddevDaysConference}"></jstl:out></td>
+	</tr>
+</table>
+<br />
+
+
+<table>
+	<caption>
+		<jstl:out value="${conferenceCategoryHeader}"></jstl:out>
+	</caption>
+	<tr>
+		<th><jstl:out value="${avgHeader}"></jstl:out></th>
+		<th><jstl:out value="${minHeader}"></jstl:out></th>
+		<th><jstl:out value="${maxHeader}"></jstl:out></th>
+		<th><jstl:out value="${stdHeader}"></jstl:out></th>
+	</tr>
+
+	<tr>
+		<td><jstl:out value="${avgConferenceCategory}"></jstl:out></td>
+		<td><jstl:out value="${minConferenceCategory}"></jstl:out></td>
+		<td><jstl:out value="${maxConferenceCategory}"></jstl:out></td>
+		<td><jstl:out value="${stddevConferenceCategory}"></jstl:out></td>
+	</tr>
+</table>
+<br />
+
+
+<table>
+	<caption>
+		<jstl:out value="${commentsConferenceHeader}"></jstl:out>
+	</caption>
+	<tr>
+		<th><jstl:out value="${avgHeader}"></jstl:out></th>
+		<th><jstl:out value="${minHeader}"></jstl:out></th>
+		<th><jstl:out value="${maxHeader}"></jstl:out></th>
+		<th><jstl:out value="${stdHeader}"></jstl:out></th>
+	</tr>
+
+	<tr>
+		<td><jstl:out value="${avgCommentsConference}"></jstl:out></td>
+		<td><jstl:out value="${minCommentsConference}"></jstl:out></td>
+		<td><jstl:out value="${maxCommentsConference}"></jstl:out></td>
+		<td><jstl:out value="${stddevCommentsConference}"></jstl:out></td>
+	</tr>
+</table>
+<br />
+
+
+
+<table>
+	<caption>
+		<jstl:out value="${commentsActivityHeader}"></jstl:out>
+	</caption>
+	<tr>
+		<th><jstl:out value="${avgHeader}"></jstl:out></th>
+		<th><jstl:out value="${minHeader}"></jstl:out></th>
+		<th><jstl:out value="${maxHeader}"></jstl:out></th>
+		<th><jstl:out value="${stdHeader}"></jstl:out></th>
+	</tr>
+
+	<tr>
+		<td><jstl:out value="${avgCommentsActivity}"></jstl:out></td>
+		<td><jstl:out value="${minCommentsActivity}"></jstl:out></td>
+		<td><jstl:out value="${maxCommentsActivity}"></jstl:out></td>
+		<td><jstl:out value="${stddevCommentsActivity}"></jstl:out></td>
 	</tr>
 </table>
 <br />

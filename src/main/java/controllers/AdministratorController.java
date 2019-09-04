@@ -110,6 +110,21 @@ public class AdministratorController extends AbstractController {
 		final int maxDaysConference = this.administratorService.maxDaysConference();
 		final int minDaysConference = this.administratorService.minDaysConference();
 		final Double stddevDaysConference = this.administratorService.stddevDaysConference();
+		
+		final Double avgConferenceCategory = this.administratorService.avgConferenceCategory();
+		final int maxConferenceCategory = this.administratorService.maxConferenceCategory();
+		final int minConferenceCategory = this.administratorService.minConferenceCategory();
+		final Double stddevConferenceCategory = this.administratorService.stddevConferenceCategory();
+		
+		final Double avgCommentsConference = this.administratorService.avgCommentsConference();
+		final int maxCommentsConference = this.administratorService.maxCommentsConference();
+		final int minCommentsConference = this.administratorService.minCommentsConference();
+		final Double stddevCommentsConference = this.administratorService.stddevCommentsConference();
+		
+		final Double avgCommentsActivity = this.administratorService.avgCommentsActivity();
+		final int maxCommentsActivity = this.administratorService.maxCommentsActivity();
+		final int minCommentsActivity = this.administratorService.minCommentsActivity();
+		final Double stddevCommentsActivity = this.administratorService.stddevCommentsActivity();
 
 		result = new ModelAndView("administrator/dashboard");
 
@@ -132,6 +147,21 @@ public class AdministratorController extends AbstractController {
 		result.addObject("maxDaysConference", maxDaysConference);
 		result.addObject("minDaysConference", minDaysConference);
 		result.addObject("stddevDaysConference", stddevDaysConference);
+		
+		result.addObject("avgConferenceCategory", avgConferenceCategory);
+		result.addObject("maxConferenceCategory", maxConferenceCategory);
+		result.addObject("minConferenceCategory", minConferenceCategory);
+		result.addObject("stddevConferenceCategory", stddevConferenceCategory);
+		
+		result.addObject("avgCommentsConference", avgCommentsConference);
+		result.addObject("maxCommentsConference", maxCommentsConference);
+		result.addObject("minCommentsConference", minCommentsConference);
+		result.addObject("stddevCommentsConference", stddevCommentsConference);
+		
+		result.addObject("avgCommentsActivity", avgCommentsActivity);
+		result.addObject("maxCommentsActivity", maxCommentsActivity);
+		result.addObject("minCommentsActivity", minCommentsActivity);
+		result.addObject("stddevCommentsActivity", stddevCommentsActivity);
 
 		return result;
 	}

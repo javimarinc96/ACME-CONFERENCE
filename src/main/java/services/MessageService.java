@@ -51,15 +51,15 @@ public class MessageService {
 
 	//Simple CRUD methods--------------------------------------------
 	public Message create() {
-		final Message res = new Message();
-		final Actor sender = this.actorService.findByPrincipal();
-
+		
+		Actor sender = this.actorService.findByPrincipal();
 		Assert.notNull(sender);
-		Assert.notNull(this.actorService.findOne(sender.getId()));
+		
+		final Message res = new Message();
+		
 		final Date moment = new Date(System.currentTimeMillis() - 1000);
-
-		res.setSender(sender);
 		res.setMoment(moment);
+		res.setSender(sender);
 
 		return res;
 	}
@@ -94,22 +94,17 @@ public class MessageService {
 	public Message save(final Message message) {
 
 		Assert.notNull(message);
-
-		final Message sended;
-		final Message receivedNotSaved = message;
-		final Message received;
-
+		
 		final Actor sender = this.actorService.findByPrincipal();
+
 		Assert.notNull(sender);
 		Assert.notNull(this.actorService.findOne(sender.getId()));
 
-		final Actor recipient = message.getRecipient();
-		Assert.notNull(recipient);
-		Assert.notNull(this.actorService.findOne(recipient.getId()));
+		message.setSender(sender);
+
+		final Message sended;
 
 		sended = this.messageRepository.save(message);
-
-		received = this.messageRepository.save(receivedNotSaved);
 
 		return sended;
 	}

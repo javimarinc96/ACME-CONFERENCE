@@ -59,17 +59,15 @@
 	<spring:message code="conference.draftMode" var="draftHeader"/>
 	<display:column property="draftMode" title="${draftHeader}" />
 	
-	<security:authorize access="hasRole('ADMIN')">
 		<display:column titleKey="conference.activities">
-			<jstl:if test="${row.draftMode eq false and row.startDate gt now}">
+			<jstl:if test="${row.draftMode eq false}">
 			<input type="submit" name="activities" value="<spring:message code="conference.activities" />"
 				onclick="javascript: relativeRedir('activity/administrator/list.do?conferenceId=${row.id}');" />
 				</jstl:if>
-				<jstl:if test="${row.draftMode eq true or row.startDate lt now}">
+				<jstl:if test="${row.draftMode eq true}">
 			<spring:message code="conference.no.activities" />
 				</jstl:if>
 		</display:column>
-	</security:authorize>
 	
 	<security:authorize access="hasRole('ADMIN')">
 		<display:column titleKey="conference.submissions">
@@ -128,17 +126,15 @@
 	<spring:message code="conference.draftMode" var="draftHeader"/>
 	<display:column property="draftMode" title="${draftHeader}" />
 	
-	<security:authorize access="hasRole('ADMIN')">
 		<display:column titleKey="conference.activities">
-			<jstl:if test="${row.draftMode eq false and row.startDate gt now}">
+			<jstl:if test="${row.draftMode eq false}">
 			<input type="submit" name="activities" value="<spring:message code="conference.activities" />"
 				onclick="javascript: relativeRedir('activity/administrator/list.do?conferenceId=${row.id}');" />
 				</jstl:if>
-				<jstl:if test="${row.draftMode eq true or row.startDate lt now}">
+				<jstl:if test="${row.draftMode eq true}">
 			<spring:message code="conference.no.activities" />
 				</jstl:if>
 		</display:column>
-	</security:authorize>
 	
 	<security:authorize access="hasRole('ADMIN')">
 		<display:column titleKey="conference.submissions">
@@ -197,17 +193,15 @@
 	<spring:message code="conference.draftMode" var="draftHeader"/>
 	<display:column property="draftMode" title="${draftHeader}" />
 	
-	<security:authorize access="hasRole('ADMIN')">
 		<display:column titleKey="conference.activities">
-			<jstl:if test="${row.draftMode eq false and row.startDate gt now}">
+			<jstl:if test="${row.draftMode eq false}">
 			<input type="submit" name="activities" value="<spring:message code="conference.activities" />"
 				onclick="javascript: relativeRedir('activity/administrator/list.do?conferenceId=${row.id}');" />
 				</jstl:if>
-				<jstl:if test="${row.draftMode eq true or row.startDate lt now}">
+				<jstl:if test="${row.draftMode eq true}">
 			<spring:message code="conference.no.activities" />
 				</jstl:if>
 		</display:column>
-	</security:authorize>
 	
 	<security:authorize access="hasRole('ADMIN')">
 		<display:column titleKey="conference.submissions">
@@ -266,17 +260,15 @@
 	<spring:message code="conference.draftMode" var="draftHeader"/>
 	<display:column property="draftMode" title="${draftHeader}" />
 	
-	<security:authorize access="hasRole('ADMIN')">
 		<display:column titleKey="conference.activities">
-			<jstl:if test="${row.draftMode eq false and row.startDate gt now}">
+			<jstl:if test="${row.draftMode eq false}">
 			<input type="submit" name="activities" value="<spring:message code="conference.activities" />"
 				onclick="javascript: relativeRedir('activity/administrator/list.do?conferenceId=${row.id}');" />
 				</jstl:if>
-				<jstl:if test="${row.draftMode eq true or row.startDate lt now}">
+				<jstl:if test="${row.draftMode eq true}">
 			<spring:message code="conference.no.activities" />
 				</jstl:if>
 		</display:column>
-	</security:authorize>
 	
 	<security:authorize access="hasRole('ADMIN')">
 		<display:column titleKey="conference.submissions">
@@ -335,17 +327,15 @@
 	<spring:message code="conference.draftMode" var="draftHeader"/>
 	<display:column property="draftMode" title="${draftHeader}" />
 	
-	<security:authorize access="hasRole('ADMIN')">
 		<display:column titleKey="conference.activities">
-			<jstl:if test="${row.draftMode eq false and row.startDate gt now}">
+			<jstl:if test="${row.draftMode eq false}">
 			<input type="submit" name="activities" value="<spring:message code="conference.activities" />"
 				onclick="javascript: relativeRedir('activity/administrator/list.do?conferenceId=${row.id}');" />
 				</jstl:if>
-				<jstl:if test="${row.draftMode eq true or row.startDate lt now}">
+				<jstl:if test="${row.draftMode eq true}">
 			<spring:message code="conference.no.activities" />
 				</jstl:if>
 		</display:column>
-	</security:authorize>
 	
 	<security:authorize access="hasRole('ADMIN')">
 		<display:column titleKey="conference.submissions">

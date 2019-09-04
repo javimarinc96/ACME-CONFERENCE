@@ -2,6 +2,8 @@
 package controllers.reviewer;
 
 import java.util.Collection;
+import java.util.Date;
+import java.util.HashSet;
 
 import javax.validation.Valid;
 
@@ -15,10 +17,12 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import services.ActorService;
+import services.AuthorService;
 import services.ReportService;
 import services.SubmissionService;
 import controllers.AbstractController;
 import domain.Actor;
+import domain.Author;
 import domain.Report;
 import domain.Reviewer;
 import domain.Submission;
@@ -33,6 +37,8 @@ public class ReportReviewerController extends AbstractController {
 	private ActorService		actorService;
 	@Autowired
 	private SubmissionService	submissionService;
+	@Autowired
+	private AuthorService		authorService;
 
 
 	@RequestMapping(value = "/list", method = RequestMethod.GET)
@@ -57,12 +63,23 @@ public class ReportReviewerController extends AbstractController {
 
 		ModelAndView res;
 		Collection<Report> reports;
+		
+		Submission s;
+
+		s = this.submissionService.findOne(submissionId);
+		
+		final Actor principal = this.actorService.findByPrincipal();
+		Assert.isInstanceOf(Author.class, principal);
+		final Author a = this.authorService.findByPrincipal();
 
 		reports = this.ReportService.findBySubmission(submissionId);
 
 		res = new ModelAndView("report/list");
 		res.addObject("reports", reports);
 		res.addObject("requestURI", "report/reviewer/listBySubmission.do");
+		
+		if (!s.getAuthor().equals(a) || s.getStatus().equals("UNDER-REVIEW"))
+			res = new ModelAndView("redirect:submission/author/list.do");
 
 		return res;
 	}
@@ -78,6 +95,12 @@ public class ReportReviewerController extends AbstractController {
 		final Reviewer r = (Reviewer) logueado;
 
 		final Collection<Submission> submissions = r.getSubmissions();
+		
+		for(Submission s : submissions){
+			if(s.getConference().getNotificationDeadline().before(new Date())){
+				submissions.remove(s);
+			}
+		}
 
 		report = this.ReportService.create();
 		res = this.createEditModelAndView(report);

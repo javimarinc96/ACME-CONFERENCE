@@ -291,5 +291,128 @@ public class AdministratorService {
 
 		return this.administratorRepository.stddevDaysPerConference();
 	}
+	
+	public Double avgConferenceCategory() {
+		Actor principal;
+
+		// Principal must be an admin
+		principal = this.actorService.findByPrincipal();
+		Assert.isInstanceOf(Administrator.class, principal);
+
+		return this.administratorRepository.avgConferenceCategory();
+	}
+
+	public Integer maxConferenceCategory() {
+		Actor principal;
+
+		// Principal must be an admin
+		principal = this.actorService.findByPrincipal();
+		Assert.isInstanceOf(Administrator.class, principal);
+
+		return this.administratorRepository.maxConferenceCategory();
+	}
+
+	public Integer minConferenceCategory() {
+		Actor principal;
+
+		// Principal must be an admin
+		principal = this.actorService.findByPrincipal();
+		Assert.isInstanceOf(Administrator.class, principal);
+
+		return this.administratorRepository.minConferenceCategory();
+	}
+
+	public Double stddevConferenceCategory() {
+		Actor principal;
+
+		// Principal must be an admin
+		principal = this.actorService.findByPrincipal();
+		Assert.isInstanceOf(Administrator.class, principal);
+
+		return this.administratorRepository.stddevConferenceCategory();
+	}
+	
+	
+	public Double avgCommentsConference() {
+		Actor principal;
+
+		// Principal must be an admin
+		principal = this.actorService.findByPrincipal();
+		Assert.isInstanceOf(Administrator.class, principal);
+
+		return this.administratorRepository.avgCommentsConference();
+	}
+
+	public Integer maxCommentsConference() {
+		Actor principal;
+
+		// Principal must be an admin
+		principal = this.actorService.findByPrincipal();
+		Assert.isInstanceOf(Administrator.class, principal);
+
+		return this.administratorRepository.maxCommentsConference();
+	}
+
+	public Integer minCommentsConference() {
+		Actor principal;
+
+		// Principal must be an admin
+		principal = this.actorService.findByPrincipal();
+		Assert.isInstanceOf(Administrator.class, principal);
+
+		return this.administratorRepository.minCommentsConference();
+	}
+
+	public Double stddevCommentsConference() {
+		Actor principal;
+
+		// Principal must be an admin
+		principal = this.actorService.findByPrincipal();
+		Assert.isInstanceOf(Administrator.class, principal);
+
+		return this.administratorRepository.stddevCommentsConference();
+	}
+	
+	public Double avgCommentsActivity() {
+		Actor principal;
+
+		// Principal must be an admin
+		principal = this.actorService.findByPrincipal();
+		Assert.isInstanceOf(Administrator.class, principal);
+
+		return this.administratorRepository.avgCommentsActivity();
+	}
+
+	public Integer maxCommentsActivity() {
+		Actor principal;
+
+		// Principal must be an admin
+		principal = this.actorService.findByPrincipal();
+		Assert.isInstanceOf(Administrator.class, principal);
+
+		return this.administratorRepository.maxCommentsActivity();
+	}
+
+	public Integer minCommentsActivity() {
+		Actor principal;
+
+		// Principal must be an admin
+		principal = this.actorService.findByPrincipal();
+		Assert.isInstanceOf(Administrator.class, principal);
+
+		return this.administratorRepository.minCommentsActivity();
+	}
+
+	public Double stddevCommentsActivity() {
+		Actor principal;
+
+		// Principal must be an admin
+		principal = this.actorService.findByPrincipal();
+		Assert.isInstanceOf(Administrator.class, principal);
+
+		return this.administratorRepository.stddevCommentsActivity();
+	}
+	
+	
 
 }
