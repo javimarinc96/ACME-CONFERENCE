@@ -20,14 +20,14 @@ import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
 @Access(AccessType.PROPERTY)
-public class Quolet extends DomainEntity {
+public class Domp extends DomainEntity {
 
 	// Attributes ---------------------------------------------------------------------------
 
 	private String			ticker;
 	private Date			moment;
 	private String			body;
-	private String			photo;
+	private String			picture;
 	private Boolean			draftMode;
 
 	// Relationships ----------------------------------------------------------
@@ -39,22 +39,22 @@ public class Quolet extends DomainEntity {
 
 	@Column(unique = true)
 	@NotBlank
-	@Pattern(regexp = "^[0-3]\\d\\w{2,5}[-][0-1]\\d\\d{2}$")
+	@Pattern(regexp = "^[A-Z]{2,4}:[0-9]{2}:[0-9]{4}$")
 	public String getTicker() {
 		return this.ticker;
 	}
-
+	
 	public void setTicker(final String ticker) {
 		this.ticker = ticker;
 	}
 
 	@URL
-	public String getPhoto() {
-		return this.photo;
+	public String getPicture() {
+		return this.picture;
 	}
 
-	public void setPhoto(final String photo) {
-		this.photo = photo;
+	public void setPicture(final String picture) {
+		this.picture = picture;
 	}
 
 	@Temporal(TemporalType.TIMESTAMP)
@@ -68,7 +68,7 @@ public class Quolet extends DomainEntity {
 	}
 
 	@NotBlank
-	@Length(max = 100)
+	@Length(max = 250)
 	public String getBody() {
 		return this.body;
 	}

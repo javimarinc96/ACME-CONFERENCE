@@ -125,6 +125,17 @@ public class AdministratorController extends AbstractController {
 		final int maxCommentsActivity = this.administratorService.maxCommentsActivity();
 		final int minCommentsActivity = this.administratorService.minCommentsActivity();
 		final Double stddevCommentsActivity = this.administratorService.stddevCommentsActivity();
+		
+		final Double avgDompsConference = this.administratorService.avgDompsConference();
+		final int maxDompsConference = this.administratorService.maxDompsConference();
+		final int minDompsConference = this.administratorService.minDompsConference();
+		final Double stddevDompsConference = this.administratorService.stddevDompsConference();
+		
+		final Double ratioPublishedDomps = this.administratorService.ratioPublishedDomps();
+		
+		final Double ratioUnPublishedDomps = this.administratorService.ratioUnPublishedDomps();
+		
+		
 
 		result = new ModelAndView("administrator/dashboard");
 
@@ -162,6 +173,15 @@ public class AdministratorController extends AbstractController {
 		result.addObject("maxCommentsActivity", maxCommentsActivity);
 		result.addObject("minCommentsActivity", minCommentsActivity);
 		result.addObject("stddevCommentsActivity", stddevCommentsActivity);
+		
+		result.addObject("avgDompsConference", avgDompsConference);
+		result.addObject("maxDompsConference", maxDompsConference);
+		result.addObject("minDompsConference", minDompsConference);
+		result.addObject("stddevDompsConference", stddevDompsConference);
+		
+		result.addObject("ratioPublishedDomps", ratioPublishedDomps);
+		
+		result.addObject("ratioUnPublishedDomps", ratioUnPublishedDomps);
 
 		return result;
 	}

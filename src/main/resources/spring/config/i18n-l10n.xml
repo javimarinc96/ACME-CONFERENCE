@@ -39,10 +39,10 @@
 		<value>/views/registration/messages</value>
 		<value>/views/customization/messages</value>
 		<value>/views/section/messages</value>
-		<value>/views/quolet/messages</value>
 		<value>/views/category/messages</value>
 		<value>/views/finder/messages</value>
 		<value>/views/comment/messages</value>
+		<value>/views/domp/messages</value>
 	</util:list>
 
 </beans>

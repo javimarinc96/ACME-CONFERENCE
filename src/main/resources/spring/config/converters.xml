@@ -38,11 +38,11 @@
 		<bean class="converters.CustomizationToStringConverter" />
 		<bean class="converters.AuthorityToStringConverter" />
 		<bean class="converters.UserAccountToStringConverter" />
-		<bean class="converters.QuoletToStringConverter" />
 		<bean class="converters.CategoryToStringConverter" />
 		<bean class="converters.FinderToStringConverter" />
 		<bean class="converters.CommentableToStringConverter" />
 		<bean class="converters.CommentToStringConverter" />
+		<bean class="converters.DompToStringConverter" />
 		
 		<bean class="converters.StringToActorConverter" />
 		<bean class="converters.StringToAuthorConverter" />
@@ -64,11 +64,11 @@
 		<bean class="converters.StringToTopicConverter" />
 		<bean class="converters.StringToAuthorityConverter" />
 		<bean class="converters.StringToUserAccountConverter" />
-		<bean class="converters.StringToQuoletConverter" />
 		<bean class="converters.StringToCategoryConverter" />
 		<bean class="converters.StringToFinderConverter" />
 		<bean class="converters.StringToCommentableConverter" />
 		<bean class="converters.StringToCommentConverter" />
+		<bean class="converters.StringToDompConverter" />
 		
 	</util:list>
 	

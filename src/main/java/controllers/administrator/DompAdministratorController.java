@@ -17,19 +17,19 @@ import org.springframework.web.servlet.ModelAndView;
 import services.ActorService;
 import services.AdministratorService;
 import services.ConferenceService;
-import services.QuoletService;
+import services.DompService;
 import controllers.AbstractController;
 import domain.Actor;
 import domain.Administrator;
 import domain.Conference;
-import domain.Quolet;
+import domain.Domp;
 
 @Controller
-@RequestMapping("/quolet/administrator")
-public class QuoletAdministratorController extends AbstractController {
+@RequestMapping("/domp/administrator")
+public class DompAdministratorController extends AbstractController {
 
 	@Autowired
-	private QuoletService			QuoletService;
+	private DompService				DompService;
 	@Autowired
 	private ConferenceService		conferenceService;
 	@Autowired
@@ -42,14 +42,14 @@ public class QuoletAdministratorController extends AbstractController {
 	public ModelAndView list() {
 
 		ModelAndView res;
-		Collection<Quolet> Quolets;
+		Collection<Domp> Domps;
 
 		final int logueadoId = this.actorService.findByPrincipal().getId();
-		Quolets = this.QuoletService.getQuoletsByAdministrator(logueadoId);
+		Domps = this.DompService.getDompsByAdministrator(logueadoId);
 
-		res = new ModelAndView("quolet/list");
-		res.addObject("quolets", Quolets);
-		res.addObject("requestURI", "quolet/administrator/list.do");
+		res = new ModelAndView("domp/list");
+		res.addObject("domps", Domps);
+		res.addObject("requestURI", "domp/administrator/list.do");
 
 		return res;
 	}
@@ -58,19 +58,19 @@ public class QuoletAdministratorController extends AbstractController {
 	public ModelAndView listConference(@RequestParam final int conferenceId) {
 
 		ModelAndView res;
-		Collection<Quolet> OneMonthOlds;
-		Collection<Quolet> TwoMonthOlds;
-		Collection<Quolet> ThreeMonthOlds;
+		Collection<Domp> OneMonthOlds;
+		Collection<Domp> TwoMonthOlds;
+		Collection<Domp> ThreeMonthOlds;
 
-		OneMonthOlds = this.QuoletService.getQuoletsByAntiquity(conferenceId, 1);
-		TwoMonthOlds = this.QuoletService.getQuoletsByAntiquity(conferenceId, 2);
-		ThreeMonthOlds = this.QuoletService.getQuoletsByAntiquity(conferenceId, 3);
+		OneMonthOlds = this.DompService.getDompsByOneMonthAntiquity(conferenceId);
+		TwoMonthOlds = this.DompService.getDompsByOneTwoMonthAntiquity(conferenceId);
+		ThreeMonthOlds = this.DompService.getDompsByTwoMonthAntiquity(conferenceId);
 
-		res = new ModelAndView("quolet/listConference");
+		res = new ModelAndView("domp/listConference");
 		res.addObject("oneMonthOlds", OneMonthOlds);
 		res.addObject("twoMonthOlds", TwoMonthOlds);
 		res.addObject("threeMonthOlds", ThreeMonthOlds);
-		res.addObject("requestURI", "quolet/administrator/listConference.do?conferenceId=" + conferenceId);
+		res.addObject("requestURI", "domp/administrator/listConference.do?conferenceId=" + conferenceId);
 
 		return res;
 	}
@@ -78,13 +78,13 @@ public class QuoletAdministratorController extends AbstractController {
 	@RequestMapping(value = "/create", method = RequestMethod.GET)
 	public ModelAndView create() {
 		ModelAndView res;
-		Quolet pro;
+		Domp pro;
 
 		final Administrator principal = this.administratorService.findByPrincipal();
 
 		final Collection<Conference> conferences = this.conferenceService.findPublicConferences();
 
-		pro = this.QuoletService.create();
+		pro = this.DompService.create();
 		res = this.createEditModelAndView(pro);
 		res.addObject("conferences", conferences);
 
@@ -92,11 +92,11 @@ public class QuoletAdministratorController extends AbstractController {
 	}
 
 	@RequestMapping(value = "/edit", method = RequestMethod.GET)
-	public ModelAndView edit(@RequestParam final int quoletId) {
+	public ModelAndView edit(@RequestParam final int dompId) {
 		ModelAndView res;
-		Quolet a;
+		Domp a;
 
-		a = this.QuoletService.findOne(quoletId);
+		a = this.DompService.findOne(dompId);
 		res = this.createEditModelAndView(a);
 
 		final Actor principal = this.actorService.findByPrincipal();
@@ -109,29 +109,32 @@ public class QuoletAdministratorController extends AbstractController {
 	}
 
 	@RequestMapping(value = "/show", method = RequestMethod.GET)
-	public ModelAndView show(@RequestParam final int quoletId) {
+	public ModelAndView show(@RequestParam final int dompId) {
 		ModelAndView result;
-		Quolet a;
-		a = this.QuoletService.findOne(quoletId);
-		result = new ModelAndView("quolet/show");
-		result.addObject("quolet", a);
+		Domp a;
+		a = this.DompService.findOne(dompId);
+		result = new ModelAndView("domp/show");
+		result.addObject("domp", a);
 
 		return result;
 	}
 
 	@RequestMapping(value = "/delete", method = RequestMethod.GET)
-	public ModelAndView delete(@RequestParam final int quoletId) {
-
+	public ModelAndView delete(@RequestParam final int dompId) {
+		try{
 		ModelAndView res;
-		Quolet a;
-		a = this.QuoletService.findOne(quoletId);
-		this.QuoletService.delete(quoletId);
+		Domp a;
+		a = this.DompService.findOne(dompId);
+		this.DompService.delete(dompId);
 		res = new ModelAndView("redirect:list.do");
 		return res;
+		}catch(Throwable oops){
+			return new ModelAndView("redirect:list.do");
+		}
 	}
 
 	@RequestMapping(value = "/save", method = RequestMethod.POST, params = "save")
-	public ModelAndView save(@Valid final Quolet a, final BindingResult binding) {
+	public ModelAndView save(@Valid final Domp a, final BindingResult binding) {
 
 		ModelAndView res;
 
@@ -145,18 +148,18 @@ public class QuoletAdministratorController extends AbstractController {
 			res.addObject("conferences", r2s);
 		} else
 			try {
-				this.QuoletService.save(a);
+				this.DompService.save(a);
 				res = new ModelAndView("redirect:list.do");
 			} catch (final Throwable oops) {
 				oops.printStackTrace();
-				res = this.createEditModelAndView(a, "quolet.commit.error");
+				res = this.createEditModelAndView(a, "Domp.commit.error");
 				res.addObject("conferences", r2s);
 			}
 
 		return res;
 	}
 
-	protected ModelAndView createEditModelAndView(final Quolet a) {
+	protected ModelAndView createEditModelAndView(final Domp a) {
 		ModelAndView res;
 
 		res = this.createEditModelAndView(a, null);
@@ -164,15 +167,15 @@ public class QuoletAdministratorController extends AbstractController {
 		return res;
 	}
 
-	protected ModelAndView createEditModelAndView(final Quolet a, final String messageCode) {
+	protected ModelAndView createEditModelAndView(final Domp a, final String messageCode) {
 		ModelAndView res;
 
 		if (a.getId() == 0)
-			res = new ModelAndView("quolet/create");
+			res = new ModelAndView("domp/create");
 		else
-			res = new ModelAndView("quolet/edit");
+			res = new ModelAndView("domp/edit");
 
-		res.addObject("quolet", a);
+		res.addObject("domp", a);
 		res.addObject("message", messageCode);
 
 		return res;

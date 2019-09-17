@@ -23,25 +23,25 @@
 	
 	<fieldset>
 
-	<b><spring:message code="quolet.ticker"></spring:message>:</b><jstl:out value="${quolet.ticker}"></jstl:out>
+	<b><spring:message code="domp.ticker"></spring:message>:</b><jstl:out value="${domp.ticker}"></jstl:out>
 	<br />
 	
-	<b><spring:message code="quolet.moment"></spring:message>:</b><fmt:formatDate pattern="${pattern}"  value="${quolet.moment}" />
+	<b><spring:message code="domp.moment"></spring:message>:</b><fmt:formatDate pattern="${pattern}"  value="${domp.moment}" />
 	<br />
 	
-	<b><spring:message code="quolet.body"></spring:message>:</b><jstl:out value="${quolet.body}"></jstl:out>
+	<b><spring:message code="domp.body"></spring:message>:</b><jstl:out value="${domp.body}"></jstl:out>
 	<br />
 	
-	<b><spring:message code="quolet.photo"></spring:message>:</b><jstl:out value="${quolet.photo}"></jstl:out>
+	<b><spring:message code="domp.picture"></spring:message>:</b><jstl:out value="${domp.picture}"></jstl:out>
 	<br />
 	
-	<b><spring:message code="quolet.draftMode"></spring:message>:</b><jstl:out value="${quolet.draftMode}"></jstl:out>
+	<b><spring:message code="domp.draftMode"></spring:message>:</b><jstl:out value="${domp.draftMode}"></jstl:out>
 	<br />
 	
-	<b><spring:message code="quolet.conference"></spring:message>:</b><jstl:out value="${quolet.conference.title}"></jstl:out>
+	<b><spring:message code="domp.conference"></spring:message>:</b><jstl:out value="${domp.conference.title}"></jstl:out>
 	<br />
 	
-	<b><spring:message code="quolet.administrator"></spring:message>:</b><jstl:out value="${quolet.administrator.name}"></jstl:out>
+	<b><spring:message code="domp.administrator"></spring:message>:</b><jstl:out value="${domp.administrator.name}"></jstl:out>
 	<br />
 	
 	</fieldset>
@@ -51,7 +51,7 @@
 <!-- Cancel -->
 
 <security:authorize access="hasRole('ADMIN')">	
-				<button type="button" onclick="javascript: relativeRedir('quolet/administrator/list.do')">
-				<spring:message code="quolet.cancel" />
+				<button type="button" onclick="javascript: relativeRedir('domp/administrator/list.do')">
+				<spring:message code="domp.cancel" />
 				</button>
 		</security:authorize>

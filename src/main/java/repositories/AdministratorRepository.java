@@ -96,4 +96,23 @@ public interface AdministratorRepository extends JpaRepository<Administrator, In
 
 	@Query("select stddev(1.0*(select count(c) from Comment c where c.activity.id = a.id)) from Activity a")
 	Double stddevCommentsActivity();
+	
+	@Query("select avg(1.0*(select count(d) from Domp d where d.conference.id = c.id)) from Conference c")
+	Double avgDompsConference();
+
+	@Query("select max(1.0*(select count(d) from Domp d where d.conference.id = c.id)) from Conference c")
+	Integer maxDompsConference();
+
+	@Query("select min(1.0*(select count(d) from Domp d where d.conference.id = c.id)) from Conference c")
+	Integer minDompsConference();
+
+	@Query("select stddev(1.0*(select count(d) from Domp d where d.conference.id = c.id)) from Conference c")
+	Double stddevDompsConference();
+	
+	@Query("select 1.0*count(d)/(select count(d) from Domp d) from Domp d where d.draftMode = false")
+	Double ratioPublishedDomps();
+	
+	@Query("select 1.0*count(d)/(select count(d) from Domp d) from Domp d where d.draftMode = true")
+	Double ratioUnPublishedDomps();
+	
 }

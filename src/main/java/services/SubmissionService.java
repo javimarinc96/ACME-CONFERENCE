@@ -188,9 +188,9 @@ public class SubmissionService {
 		Assert.isInstanceOf(Author.class, principal);
 		final Author prin = this.authorService.findByPrincipal();
 
-		final String name = prin.getName();
-		final String middleName = prin.getMiddleName();
-		final String surName = prin.getSurname();
+		final String name = prin.getName().toUpperCase();
+		final String middleName = prin.getMiddleName().toUpperCase();
+		final String surName = prin.getSurname().toUpperCase();
 
 		if (middleName == null || middleName.equals(""))
 			result = result.concat(name.substring(0, 1)).concat("X").concat(surName.substring(0, 1));

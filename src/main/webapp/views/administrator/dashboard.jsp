@@ -38,6 +38,12 @@
 	var="commentsConferenceHeader" />
 <spring:message code="administrator.dashboard.comments.activity"
 	var="commentsActivityHeader" />
+<spring:message code="administrator.dashboard.domps.conference"
+	var="dompsConferenceHeader" />
+<spring:message code="administrator.dashboard.ratio.published"
+	var="ratioPublishedHeader" />
+<spring:message code="administrator.dashboard.ratio.unpublished"
+	var="ratioUnpublishedHeader" />
 
 <!--  Custom table style -->
 <head>
@@ -191,6 +197,55 @@
 		<td><jstl:out value="${minCommentsActivity}"></jstl:out></td>
 		<td><jstl:out value="${maxCommentsActivity}"></jstl:out></td>
 		<td><jstl:out value="${stddevCommentsActivity}"></jstl:out></td>
+	</tr>
+</table>
+<br />
+
+
+<table>
+	<caption>
+		<jstl:out value="${dompsConferenceHeader}"></jstl:out>
+	</caption>
+	<tr>
+		<th><jstl:out value="${avgHeader}"></jstl:out></th>
+		<th><jstl:out value="${minHeader}"></jstl:out></th>
+		<th><jstl:out value="${maxHeader}"></jstl:out></th>
+		<th><jstl:out value="${stdHeader}"></jstl:out></th>
+	</tr>
+
+	<tr>
+		<td><jstl:out value="${avgDompsConference}"></jstl:out></td>
+		<td><jstl:out value="${minDompsConference}"></jstl:out></td>
+		<td><jstl:out value="${maxDompsConference}"></jstl:out></td>
+		<td><jstl:out value="${stddevDompsConference}"></jstl:out></td>
+	</tr>
+</table>
+<br />
+
+
+<table>
+	<caption>
+		<jstl:out value="${ratioPublishedHeader}"></jstl:out>
+	</caption>
+	<tr>
+		<th><jstl:out value="${ratioPublishedHeader}"></jstl:out></th>
+	</tr>
+	<tr>
+		<td>${ratioPublishedDomps}</td>
+	</tr>
+</table>
+<br />
+
+
+<table>
+	<caption>
+		<jstl:out value="${ratioUnpublishedHeader}"></jstl:out>
+	</caption>
+	<tr>
+		<th><jstl:out value="${ratioUnpublishedHeader}"></jstl:out></th>
+	</tr>
+	<tr>
+		<td>${ratioUnPublishedDomps}</td>
 	</tr>
 </table>
 <br />

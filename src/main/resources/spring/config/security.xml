@@ -102,13 +102,13 @@
 		<security:intercept-url pattern="/submission/author/assignReviewers.do" access="hasRole('ADMIN')" />
 		<security:intercept-url pattern="/submission/author/cameraReady.do" access="hasRole('AUTHOR')" />
 		
-		<security:intercept-url pattern="/quolet/administrator/list.do" access="hasRole('ADMIN')" />
-		<security:intercept-url pattern="/quolet/administrator/listConference.do" access="permitAll" />
-		<security:intercept-url pattern="/quolet/administrator/create.do" access="hasRole('ADMIN')" />
-		<security:intercept-url pattern="/quolet/administrator/show.do" access="hasRole('ADMIN')" />
-		<security:intercept-url pattern="/quolet/administrator/save.do" access="hasRole('ADMIN')" />
-		<security:intercept-url pattern="/quolet/administrator/edit.do" access="hasRole('ADMIN')" />
-		<security:intercept-url pattern="/quolet/administrator/delete.do" access="hasRole('ADMIN')" />
+		<security:intercept-url pattern="/domp/administrator/list.do" access="hasRole('ADMIN')" />
+		<security:intercept-url pattern="/domp/administrator/listConference.do" access="permitAll" />
+		<security:intercept-url pattern="/domp/administrator/create.do" access="hasRole('ADMIN')" />
+		<security:intercept-url pattern="/domp/administrator/show.do" access="hasRole('ADMIN')" />
+		<security:intercept-url pattern="/domp/administrator/save.do" access="hasRole('ADMIN')" />
+		<security:intercept-url pattern="/domp/administrator/edit.do" access="hasRole('ADMIN')" />
+		<security:intercept-url pattern="/domp/administrator/delete.do" access="hasRole('ADMIN')" />
 		
 		<security:intercept-url pattern="/conference/administrator/listForthcoming.do" access="permitAll" />
 		<security:intercept-url pattern="/conference/administrator/listRunning.do" access="permitAll" />

@@ -4,11 +4,11 @@ package converters;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
-import repositories.QuoletRepository;
-import domain.Quolet;
+import repositories.DompRepository;
+import domain.Domp;
 
 @Component
 @Transactional
-public class StringToQuoletConverter extends StringToEntity<Quolet, QuoletRepository> {
+public class StringToDompConverter extends StringToEntity<Domp, DompRepository> {
 
 }

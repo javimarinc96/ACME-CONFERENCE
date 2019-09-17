@@ -42,7 +42,7 @@
 		<property name="password" value="LLIlISRn1iiU8Krcj5aC" />
 		<property name="minPoolSize" value="1" />
 		<property name="maxPoolSize" value="5" />  
-	</bean>  -->
+	</bean>   -->
 
 	<!-- JPA -->
 

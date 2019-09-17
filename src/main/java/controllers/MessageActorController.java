@@ -8,6 +8,7 @@ import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -75,7 +76,7 @@ public class MessageActorController extends AbstractController {
 	}
 
 	@RequestMapping(value = "/save", method = RequestMethod.POST, params = "save")
-	public ModelAndView save(@Valid final Message newMessage, final BindingResult binding) {
+	public ModelAndView save(@ModelAttribute("mess") @Valid final Message newMessage, final BindingResult binding) {
 
 		ModelAndView res;
 		final Collection<Topic> topics = this.topicService.findAll();
@@ -116,7 +117,7 @@ public class MessageActorController extends AbstractController {
 	}
 
 	@RequestMapping(value = "/broadcast", method = RequestMethod.POST, params = "save")
-	public ModelAndView broadcast(final Message newMessage, final BindingResult binding) {
+	public ModelAndView broadcast(@ModelAttribute("mess") @Valid final Message newMessage, final BindingResult binding) {
 		ModelAndView res;
 		final Collection<Topic> topics = this.topicService.findAll();
 
@@ -160,7 +161,7 @@ public class MessageActorController extends AbstractController {
 	}
 
 	@RequestMapping(value = "/broadcastAuthors", method = RequestMethod.POST, params = "save")
-	public ModelAndView broadcastAuthors(final Message newMessage, final BindingResult binding) {
+	public ModelAndView broadcastAuthors(@ModelAttribute("mess") @Valid final Message newMessage, final BindingResult binding) {
 		ModelAndView res;
 		final Collection<Topic> topics = this.topicService.findAll();
 		if (binding.hasErrors()) {
@@ -202,7 +203,7 @@ public class MessageActorController extends AbstractController {
 	}
 
 	@RequestMapping(value = "/broadcastRegisteredAuthors", method = RequestMethod.POST, params = "save")
-	public ModelAndView broadcastRegisteredAuthors(final Message newMessage, final BindingResult binding) {
+	public ModelAndView broadcastRegisteredAuthors(@ModelAttribute("mess") @Valid final Message newMessage, final BindingResult binding) {
 		ModelAndView res;
 		final Collection<Topic> topics = this.topicService.findAll();
 		if (binding.hasErrors()) {
@@ -244,7 +245,7 @@ public class MessageActorController extends AbstractController {
 	}
 
 	@RequestMapping(value = "/broadcastSubmissionAuthors", method = RequestMethod.POST, params = "save")
-	public ModelAndView broadcastSubmissionAuthors(final Message newMessage, final BindingResult binding) {
+	public ModelAndView broadcastSubmissionAuthors(@ModelAttribute("mess") @Valid final Message newMessage, final BindingResult binding) {
 		ModelAndView res;
 		final Collection<Topic> topics = this.topicService.findAll();
 		if (binding.hasErrors()) {
@@ -325,6 +326,9 @@ public class MessageActorController extends AbstractController {
 		ModelAndView res;
 
 		res = new ModelAndView("message/broadcast");
+		//Esto lo hacemos para que en el controlador al guardar no se nos queje, una vez pasado
+		//se le asignaran los recipients en los servicios
+		newMessage.setRecipient(newMessage.getSender());
 		res.addObject("mess", newMessage);
 		res.addObject("message", text);
 

@@ -78,6 +78,18 @@
 		</property>
 	</bean>
 	
+	<bean id="userAccount6" class="security.UserAccount">
+		<property name="username" value="admin2" />
+		<property name="password" value="2674437bdc2299977c6817169fea9439" />
+		<property name="authorities">
+			<list>
+				<bean class="security.Authority">
+					<property name="authority" value="ADMIN" />
+				</bean>
+			</list>
+		</property>
+	</bean>
+	
 	<!-- Other domain beans come here -->	
 	
 	
@@ -89,6 +101,17 @@
 		<property name="surname" value="Surname Admin" />
 		<property name="photo" value="" />
 		<property name="email" value="admin@domain.com" />
+		<property name="phoneNumber" value="" />
+		<property name="address" value="" />
+	</bean>
+	
+	<bean id="admin2" class="domain.Administrator">
+		<property name="userAccount" ref="userAccount6" />
+		<property name="name" value="Admin2" />
+		<property name="middleName" value="" />
+		<property name="surname" value="Surname Admin" />
+		<property name="photo" value="" />
+		<property name="email" value="admin2@domain.com" />
 		<property name="phoneNumber" value="" />
 		<property name="address" value="" />
 	</bean>
@@ -539,45 +562,45 @@
 		<property name="conference" ref="conference2"/>
 	</bean>
 	
-	<!--QUOLET-->
+	<!--Domp-->
 
-	<bean id="TESTQUOLET1" class="domain.Quolet">
-		<property name="ticker" value="24ABCD-0619" />
+	<bean id="TESTDomp1" class="domain.Domp">
+		<property name="ticker" value="DEFG:19:0905" />
 		<property name="draftMode" value="false" />
-		<property name="photo" value="http://www.url.com" />
-		<property name="moment" value="08/15/19 10:00" />
+		<property name="picture" value="http://www.url.com" />
+		<property name="moment" value="08/22/19 10:00" />
 		<property name="body" value="body1" />
 		<property name="administrator" ref="admin" />
 		<property name="conference" ref="conference1" />
 	</bean>
 	
-	<bean id="TESTQUOLET2" class="domain.Quolet">
-		<property name="ticker" value="24FKLM-0619" />
+	<bean id="TESTDomp2" class="domain.Domp">
+		<property name="ticker" value="ABCD:19:0905" />
 		<property name="draftMode" value="false" />
-		<property name="photo" value="http://www.url.com" />
-		<property name="moment" value="07/22/19 10:00" />
+		<property name="picture" value="http://www.url.com" />
+		<property name="moment" value="07/25/19 10:00" />
 		<property name="body" value="body2" />
 		<property name="administrator" ref="admin" />
 		<property name="conference" ref="conference2" />
 	</bean>
 	
-	<bean id="TESTQUOLET3" class="domain.Quolet">
-		<property name="ticker" value="24KQGM0-0619"/>
+	<bean id="TESTDomp3" class="domain.Domp">
+		<property name="ticker" value="HJKL:19:0905" />
 		<property name="draftMode" value="false" />
-		<property name="photo" value="http://www.url.com" />
-		<property name="moment" value="06/27/19 10:00" />
+		<property name="picture" value="http://www.url.com" />
+		<property name="moment" value="06/20/19 10:00" />
 		<property name="body" value="body3" />
-		<property name="administrator" ref="admin" />
+		<property name="administrator" ref="admin2" />
 		<property name="conference" ref="conference1" />
 	</bean>
 	
-	<bean id="TESTQUOLET4" class="domain.Quolet">
-		<property name="ticker" value="24ORQP-0619" />
+	<bean id="TESTDomp4" class="domain.Domp">
+		<property name="ticker" value="RTIO:19:0905" />
 		<property name="draftMode" value="false" />
-		<property name="photo" value="http://www.url.com" />
-		<property name="moment" value="06/25/19 10:00" />
+		<property name="picture" value="http://www.url.com" />
+		<property name="moment" value="06/23/19 10:00" />
 		<property name="body" value="body4" />
-		<property name="administrator" ref="admin" />
+		<property name="administrator" ref="admin2" />
 		<property name="conference" ref="conference2" />
 	</bean>
 	

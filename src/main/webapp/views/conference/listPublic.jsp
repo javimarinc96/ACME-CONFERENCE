@@ -71,6 +71,11 @@
 			<input type="submit" name="comments" value="<spring:message code="conference.comments" />"
 				onclick="javascript: relativeRedir('comment/listConference.do?conferenceId=${row.id}');" />
 	</display:column>
+	
+	<display:column titleKey="conference.domps">
+			<input type="submit" name="domps" value="<spring:message code="conference.domps" />"
+				onclick="javascript: relativeRedir('domp/administrator/listConference.do?conferenceId=${row.id}');" />
+	</display:column>
 
 
 </display:table>

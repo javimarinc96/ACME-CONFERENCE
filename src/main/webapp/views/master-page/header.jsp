@@ -26,7 +26,7 @@
 			<li><a class="fNiv"><spring:message	code="master.page.administrator" /></a>
 				<ul>
 					<li class="arrow"></li>
-					<!-- <li><a href="quolet/administrator/list.do"><spring:message code="master.page.quolet.list" /></a></li>  -->
+					<li><a href="domp/administrator/list.do"><spring:message code="master.page.domp.list" /></a></li> 
 					<li><a href="administrator/create.do"><spring:message code="master.page.administrator.create" /></a></li>
 					<li><a href="conference/administrator/list.do"><spring:message code="master.page.conference.list" /></a></li>
 					<li><a href="category/administrator/list.do"><spring:message code="master.page.category.list" /></a></li>

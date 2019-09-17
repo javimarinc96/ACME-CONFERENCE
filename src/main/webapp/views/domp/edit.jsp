@@ -9,25 +9,25 @@
 <%@ taglib prefix="acme" tagdir="/WEB-INF/tags"%>
 
 
-<form:form action="quolet/administrator/save.do" modelAttribute="quolet" method="post">
+<form:form action="domp/administrator/save.do" modelAttribute="domp" method="post">
 
 	<form:hidden path="id" />
 	<form:hidden path="version" />
 	<form:hidden path="moment" />
 	<form:hidden path="ticker" />
 	<form:hidden path="administrator" />
-	<jstl:if test='${quolet.id != 0}'>
+	<jstl:if test='${domp.id != 0}'>
 	<form:hidden path="conference" />
 	</jstl:if>
 	
 	
-	<acme:textbox code="quolet.body" path="body" />
+	<acme:textbox code="domp.body" path="body" />
 	<br/>
 	
-	<acme:textbox code="quolet.photo" path="photo" />
+	<acme:textbox code="domp.picture" path="picture" />
 	<br/>
 
-	<jstl:if test='${quolet.draftMode == true}'>
+	<jstl:if test='${domp.draftMode == true}'>
 		<form:label path="draftMode">
 		<spring:message code="conference.draftMode"/>
     	</form:label>
@@ -37,10 +37,10 @@
 	<br/>		
 	</jstl:if>
 	
-	<jstl:if test='${quolet.id == 0}'>
+	<jstl:if test='${domp.id == 0}'>
 	
 	<form:label path="conference">
-	<spring:message code="quolet.conference" />:
+	<spring:message code="domp.conference" />:
 	</form:label>
 	
 	<form:select path="conference" >
@@ -53,11 +53,11 @@
 	<br />	
 	
 	<input type="submit" name="save"
-		value="<spring:message code="quolet.save"/>" />
+		value="<spring:message code="domp.save"/>" />
 
 	<input type="button" name="cancel"
-		value="<spring:message code="quolet.cancel" />"
-		onclick="javascript: relativeRedir('quolet/administrator/list.do');" />
+		value="<spring:message code="domp.cancel" />"
+		onclick="javascript: relativeRedir('domp/administrator/list.do');" />
 
 
 </form:form>

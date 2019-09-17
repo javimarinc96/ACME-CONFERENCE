@@ -6,47 +6,50 @@
 <%@taglib prefix="display" uri="http://displaytag.sf.net"%>
 <%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
-<display:table name="quolets" id="row" pagesize="5" requestURI="${requestURI}" class="displaytag">
+<display:table name="domps" id="row" pagesize="5" requestURI="${requestURI}" class="displaytag">
 	
-	<spring:message code="quolet.moment.pattern" var="momentPattern" />
+	<spring:message code="domp.moment.pattern" var="momentPattern" />
 	
-	<spring:message code="quolet.ticker" var="ticker" />
+	<spring:message code="domp.ticker" var="ticker" />
 	<display:column property="ticker" title="${ticker}" />
 	
-	<spring:message code="quolet.moment" var="moment" />
+	<spring:message code="domp.moment" var="moment" />
 	<display:column property="moment" title="${moment}" format="${momentPattern}" />
 	
-	<spring:message code="quolet.body" var="body" />
+	<spring:message code="domp.body" var="body" />
 	<display:column property="body" title="${body}" />
+	
+	<spring:message code="domp.picture" var="picture" />
+	<display:column property="picture" title="${picture}" />
 	
 
 	<security:authorize access="hasRole('ADMIN')">
-		<display:column titleKey="quolet.show">
-			<input type="submit" name="show" value="<spring:message code="quolet.show" />"
-				onclick="javascript: relativeRedir('quolet/administrator/show.do?quoletId=${row.id}');" />
+		<display:column titleKey="domp.show">
+			<input type="submit" name="show" value="<spring:message code="domp.show" />"
+				onclick="javascript: relativeRedir('domp/administrator/show.do?dompId=${row.id}');" />
 		</display:column>
 	</security:authorize>
 	
 	<security:authorize access="hasRole('ADMIN')">
-		<display:column titleKey="quolet.edit">
+		<display:column titleKey="domp.edit">
 		<jstl:if test="${row.draftMode eq true}">
-		<input type="submit" name="edit" value="<spring:message code="quolet.edit" />"
-				onclick="javascript: relativeRedir('quolet/administrator/edit.do?quoletId=${row.id}');" />
+		<input type="submit" name="edit" value="<spring:message code="domp.edit" />"
+				onclick="javascript: relativeRedir('domp/administrator/edit.do?dompId=${row.id}');" />
 				</jstl:if>
 			<jstl:if test="${row.draftMode eq false}">
-			<spring:message code="quolet.no.draft" />
+			<spring:message code="domp.no.draft" />
 		 </jstl:if>
 		</display:column>
 	</security:authorize>
 	
 	<security:authorize access="hasRole('ADMIN')">
-		<display:column titleKey="quolet.delete">
+		<display:column titleKey="domp.delete">
 		<jstl:if test="${row.draftMode eq true}">
-			<input type="submit" name="delete" value="<spring:message code="quolet.delete" />"
-				onclick="javascript: relativeRedir('quolet/administrator/delete.do?quoletId=${row.id}');" />
+			<input type="submit" name="delete" value="<spring:message code="domp.delete" />"
+				onclick="javascript: relativeRedir('domp/administrator/delete.do?dompId=${row.id}');" />
 				</jstl:if>
 					<jstl:if test="${row.draftMode eq false}">
-			<spring:message code="quolet.no.draft" />
+			<spring:message code="domp.no.draft" />
 		 </jstl:if>
 		</display:column>
 	</security:authorize>
@@ -58,6 +61,6 @@
 
 <security:authorize access="hasRole('ADMIN')">
 	<input type="submit" name="create"
-		value="<spring:message code="quolet.create" />"
-		onclick="javascript: relativeRedir('quolet/administrator/create.do');" />
+		value="<spring:message code="domp.create" />"
+		onclick="javascript: relativeRedir('domp/administrator/create.do');" />
 </security:authorize>

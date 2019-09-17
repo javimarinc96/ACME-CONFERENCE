@@ -18,29 +18,29 @@
        
 <tiles-definitions>
 
-	<definition name="quolet/list" extends="master.page">
+	<definition name="domp/list" extends="master.page">
 		<put-attribute name="title" value="Lista de Aclaraciones" />
-		<put-attribute name="body" value="/views/quolet/list.jsp" />
+		<put-attribute name="body" value="/views/domp/list.jsp" />
 	</definition>
 	
-	<definition name="quolet/listConference" extends="master.page">
+	<definition name="domp/listConference" extends="master.page">
 		<put-attribute name="title" value="Lista de Aclaraciones" />
-		<put-attribute name="body" value="/views/quolet/listConference.jsp" />
+		<put-attribute name="body" value="/views/domp/listConference.jsp" />
 	</definition>
 	
-	<definition name="quolet/create" extends="master.page">
+	<definition name="domp/create" extends="master.page">
 		<put-attribute name="title" value="Crear Aclaracion" />
-		<put-attribute name="body" value="/views/quolet/edit.jsp" />
+		<put-attribute name="body" value="/views/domp/edit.jsp" />
 	</definition>
 
-	<definition name="quolet/edit" extends="master.page">
+	<definition name="domp/edit" extends="master.page">
 		<put-attribute name="title" value="Editar Aclaracion" />
-		<put-attribute name="body" value="/views/quolet/edit.jsp" />
+		<put-attribute name="body" value="/views/domp/edit.jsp" />
 	</definition>
 	
-		<definition name="quolet/show" extends="master.page">
+		<definition name="domp/show" extends="master.page">
 		<put-attribute name="title" value="Mostrar Aclaracion" />
-		<put-attribute name="body" value="/views/quolet/show.jsp" />
+		<put-attribute name="body" value="/views/domp/show.jsp" />
 	</definition>
 	
 	

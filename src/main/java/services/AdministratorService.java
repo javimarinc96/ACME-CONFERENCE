@@ -415,4 +415,64 @@ public class AdministratorService {
 	
 	
 
+	public Double avgDompsConference() {
+		Actor principal;
+
+		// Principal must be an admin
+		principal = this.actorService.findByPrincipal();
+		Assert.isInstanceOf(Administrator.class, principal);
+
+		return this.administratorRepository.avgDompsConference();
+	}
+
+	public Integer maxDompsConference() {
+		Actor principal;
+
+		// Principal must be an admin
+		principal = this.actorService.findByPrincipal();
+		Assert.isInstanceOf(Administrator.class, principal);
+
+		return this.administratorRepository.maxDompsConference();
+	}
+
+	public Integer minDompsConference() {
+		Actor principal;
+
+		// Principal must be an admin
+		principal = this.actorService.findByPrincipal();
+		Assert.isInstanceOf(Administrator.class, principal);
+
+		return this.administratorRepository.minDompsConference();
+	}
+
+	public Double stddevDompsConference() {
+		Actor principal;
+
+		// Principal must be an admin
+		principal = this.actorService.findByPrincipal();
+		Assert.isInstanceOf(Administrator.class, principal);
+
+		return this.administratorRepository.stddevDompsConference();
+	}
+	
+	public Double ratioPublishedDomps() {
+		Actor principal;
+
+		// Principal must be an admin
+		principal = this.actorService.findByPrincipal();
+		Assert.isInstanceOf(Administrator.class, principal);
+
+		return this.administratorRepository.ratioPublishedDomps();
+	}
+	
+	public Double ratioUnPublishedDomps() {
+		Actor principal;
+
+		// Principal must be an admin
+		principal = this.actorService.findByPrincipal();
+		Assert.isInstanceOf(Administrator.class, principal);
+
+		return this.administratorRepository.ratioUnPublishedDomps();
+	}
+
 }
